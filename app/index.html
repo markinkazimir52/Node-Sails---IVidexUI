@@ -1,0 +1,677 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <title>&middot; ividex &middot;</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    
+     <!-- build:css(.tmp) styles/main.css -->
+    
+     
+	<link href="../toolkit/toolkit.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+	<!-- endbuild -->
+    <style>
+      /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+      /* this chunk of css is not part of the toolkit :) */
+      body {
+        width: 1px;
+        min-width: 100%;
+        *width: 100%;
+      }
+    </style>
+
+  </head>
+
+
+<body ng-app="iVidexApp" class="with-top-navbar">
+  
+
+
+<div class="growl" id="app-growl"></div>
+
+<nav class="navbar navbar-inverse navbar-fixed-top app-navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-main">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <span class="navbar-brand">
+        <img src="images/brand-white.png" alt="brand">
+      </span>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-collapse-main">
+
+        
+
+        <ul class="nav navbar-nav navbar-right m-r-0 hidden-xs">
+          <li>
+            <a class="app-notifications " data-toggle="popover">
+              <span class=" img-circle icon icon-log-out"></span>
+            </a>
+          </li>
+        </ul>
+
+<!-- MOBILE MENU >
+        <ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
+          <li><a href="index.html">prescriptions</a></li>
+          <li><a href="profile/index.html"></a></li>
+          <li><a href="notifications/index.html">Notifications</a></li>
+          <li><a data-toggle="modal" href="#msgModal">Messages</a></li>
+          <li><a href="docs/index.html">Docs</a></li>
+          <li><a href="#" data-action="growl">Growl</a></li>
+          <li><a href="login/index.html">Logout</a></li>
+        </ul>
+END MOBILE MENU 
+-->
+        <ul class="nav navbar-nav hidden">
+          
+          <li><a href="login/index.html">Logout</a></li>
+        </ul>
+      </div>
+  </div>
+</nav>
+
+
+
+<div class="container p-t-md">
+  <div class="row">
+    <div class="col-md-3">
+
+      <div class="list-group m-b-md">
+        <a href="rx.html" class="list-group-item active">
+          <span class="icon icon-chevron-thin-right pull-right"></span>
+          prescriptions
+        </a>
+        <a href="ex.html" class="list-group-item">
+          <span class="icon icon-chevron-thin-right pull-right"></span>
+          exercises
+        </a>
+        <a href="pr.html" class="list-group-item">
+          <span class="icon icon-chevron-thin-right pull-right"></span>
+          protocols
+        </a>
+      </div>
+
+      
+    </div>
+
+   
+	    <div class="col-md6 col-md-6" style="display: block;">
+	           <div class="page-header">
+	             <h3>
+	               Alexis Goldsmith
+	             </h3>
+	             <span class="label label-primary">alexis@gmail.com</span>
+	           </div>
+	           <div class="well">
+	             <span class="badge pull-right">23 Logins since Oct. 1 2014</span>
+	             <h3>
+	               torn ligament
+	             </h3>
+	             <div>
+	               <span class="label label-default">surgery date</span>
+	               07/15/2015
+	             </div>
+	             <hr>
+	             <p>
+	               prescription text
+	             </p>
+	           </div>
+	           <div class="page-header">
+	             <button type="submit" class="btn btn-default pull-right">
+	               Add Exercise
+	             </button>
+	             <h3>
+	               Assigned Exercises
+	             </h3>
+	           </div>
+			  <table class="table">
+			            <tbody>
+			              <tr>
+			                <td>
+			                  <h5>
+			                    Exercise Name Row 2
+			                  </h5>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control" name="">
+			                      <option value="">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control">
+			                      <option value="1">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control" name="">
+			                      <option value="1">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <button type="submit" class="btn btn-default">
+			                    remove
+			                  </button>
+			                </td>
+			              </tr>
+			              <tr>
+			                <td>
+			                  <h5>
+			                    Exercise Name Row 2
+			                  </h5>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control" name="">
+			                      <option value="">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control">
+			                      <option value="1">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control" name="">
+			                      <option value="1">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <button type="submit" class="btn btn-default">
+			                    remove
+			                  </button>
+			                </td>
+			              </tr>
+			              <tr>
+			                <td>
+			                  <h5>
+			                    Exercise Name Row 2
+			                  </h5>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control" name="">
+			                      <option value="">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control">
+			                      <option value="1">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control" name="">
+			                      <option value="1">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <button type="submit" class="btn btn-default">
+			                    remove
+			                  </button>
+			                </td>
+			              </tr>
+			              <tr>
+			                <td>
+			                  <h5>
+			                    Exercise Name Row 2
+			                  </h5>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control" name="">
+			                      <option value="">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control">
+			                      <option value="1">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <div class="form-group">
+			                    <select class="form-control" name="">
+			                      <option value="1">
+			                        1
+			                      </option>
+			                      <option value="2">
+			                        2
+			                      </option>
+			                      <option value="3">
+			                        3
+			                      </option>
+			                      <option value="4">
+			                        4
+			                      </option>
+			                      <option value="5">
+			                        5
+			                      </option>
+			                      <option value="6">
+			                        6
+			                      </option>
+			                      <option value="7">
+			                        7
+			                      </option>
+			                      <option value="8">
+			                        8
+			                      </option>
+			                      <option value="9">
+			                        9
+			                      </option>
+			                    </select>
+			                  </div>
+			                </td>
+			                <td>
+			                  <button type="submit" class="btn btn-default">
+			                    remove
+			                  </button>
+			                </td>
+			              </tr>
+			            </tbody>
+			            <thead>
+			              <tr>
+			                <th>
+			                  <br>
+			                </th>
+			                <th>
+			                  Holds
+			                </th>
+			                <th>
+			                  Reps
+			                </th>
+			                <th>
+			                  Weeks
+			                </th>
+			                <th>
+			                  <br>
+			                </th>
+			              </tr>
+			            </thead>
+			          </table>
+	  
+	          
+	         </div>
+     
+    <div class="col-md-3">
+      <div class="panel panel-default m-b-md hidden-xs">
+        <div class="panel-body">
+        <h5 class="m-t-0">Patient History</h5>
+        <ul class="media-list media-list-stream">
+          <li class="media m-b">
+            <div class="media-body">
+				<address>
+					<strong>hip replacement</strong> <br/>
+					<span class="icon icon-calendar lg"></span> 3/15/2014<br/>
+            	</address>
+              <div class="media-body-actions">
+                <button class="btn btn-primary-outline btn-sm">
+                 Open</button>
+              </div>
+            </div>
+          </li>
+          
+        </ul>
+        </div>
+        
+      </div>
+
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+          © 2015 ividex corp.
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+		<script src="../toolkit/toolkit.js"></script>
+        <script src="scripts/application.js"></script>
+       <script src="scripts/app.js" type="text/javascript" charset="utf-8"></script>
+        <!-- endbuild -->
+   
+   
+    
+    <script>
+      // execute/clear BS loaders for docs
+      $(function(){
+        if (window.BS&&window.BS.loader&&window.BS.loader.length) {
+          while(BS.loader.length){(BS.loader.pop())()}
+        }
+      })
+    </script>
+  </body>
+</html>
+
