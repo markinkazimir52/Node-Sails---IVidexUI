@@ -17,7 +17,9 @@ angular
     'ngSanitize',
 	  'ui.bootstrap',
 	  'ui.bootstrap.popover',
-	  'ui.bootstrap.typeahead'
+	  'ui.bootstrap.typeahead',
+	  'ui.bootstrap.dropdown',
+	  'ui.bootstrap.modal'
   ])
   .config(function ($routeProvider) {
     $routeProvider

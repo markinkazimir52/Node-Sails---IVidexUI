@@ -1,4 +1,34 @@
-  <div class="row">
+  <script type="text/ng-template" id="myModalContent.html">
+          <div class="modal-header">
+              <h3 class="modal-title">Select a Therapy Area or a Protocol</h3>
+          </div>
+          <div class="modal-body">
+			  <uib-tabset justified="true">
+			  <uib-tab heading="Therapy Areas">
+			  <ul>
+                  <li ng-repeat="item in items">
+                      <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                  </li>
+              </ul>
+              Selected: <b>{{ selected.item }}</b>
+			  
+			  </uib-tab>
+			  <uib-tab heading="Protocols">
+			  </uib-tab>
+		  	</uib-tabset>
+			  
+			  
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+              <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+          </div>
+      </script>
+
+
+
+	  
+	  <div class="row">
     <div class="col-md-3">
 
       <div class="list-group m-b-md">
@@ -28,7 +58,9 @@
 	             <span class="label label-primary">alexis@gmail.com</span>
 	           </div>
 	           <div class="well">
-	             <span class="badge pull-right">23 Logins since Oct. 1 2014</span>
+	             <div class="pull-right">
+					 <span class="badge ">23 Logins</span> <br/><span style="font-style:italic;">since</span> <h3 class="m-t-0"><span class="rxDate">10/28/2015</span></h3>
+				 </div>
 	             <h3>
 	               torn ligament
 	             </h3>
@@ -42,8 +74,9 @@
 	             </p>
 	           </div>
 	           <div class="page-header">
-	             <button type="submit" class="btn btn-default pull-right">
-	               Add Exercise
+				 
+	             <button type="submit" class="btn btn-primary  pull-right" ng-click="open('lg')">
+	             <span class="icon icon-plus"></span>  
 	             </button>
 	             <h3>
 	               Assigned Exercises
@@ -58,108 +91,66 @@
 			                  </h5>
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control" name="">
-			                      <option value="">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+								<div class="btn-group" uib-dropdown>
+									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+										<span class="caret"></span>
+										<span class="sr-only">1</span>
+									</button>
+									<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+										<li role="menuitem"><a href="#">1</a></li>
+										<li role="menuitem"><a href="#">2</a></li>
+										<li role="menuitem"><a href="#">3</a></li>
+										<li role="menuitem"><a href="#">4</a></li>
+										<li role="menuitem"><a href="#">5</a></li>
+										<li role="menuitem"><a href="#">6</a></li>
+										<li role="menuitem"><a href="#">7</a></li>
+										<li role="menuitem"><a href="#">8</a></li>
+										<li role="menuitem"><a href="#">9</a></li>
+									</ul>
+								</div>
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control">
-			                      <option value="1">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+							<div class="btn-group" uib-dropdown>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<span class="caret"></span>
+									<span class="sr-only">1</span>
+								</button>
+								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+									<li role="menuitem"><a href="#">1</a></li>
+									<li role="menuitem"><a href="#">2</a></li>
+									<li role="menuitem"><a href="#">3</a></li>
+									<li role="menuitem"><a href="#">4</a></li>
+									<li role="menuitem"><a href="#">5</a></li>
+									<li role="menuitem"><a href="#">6</a></li>
+									<li role="menuitem"><a href="#">7</a></li>
+									<li role="menuitem"><a href="#">8</a></li>
+									<li role="menuitem"><a href="#">9</a></li>
+								</ul>
+							</div>
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control" name="">
-			                      <option value="1">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+							<div class="btn-group" uib-dropdown>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<span class="caret"></span>
+									<span class="sr-only">1</span>
+								</button>
+								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+									<li role="menuitem"><a href="#">1</a></li>
+									<li role="menuitem"><a href="#">2</a></li>
+									<li role="menuitem"><a href="#">3</a></li>
+									<li role="menuitem"><a href="#">4</a></li>
+									<li role="menuitem"><a href="#">5</a></li>
+									<li role="menuitem"><a href="#">6</a></li>
+									<li role="menuitem"><a href="#">7</a></li>
+									<li role="menuitem"><a href="#">8</a></li>
+									<li role="menuitem"><a href="#">9</a></li>
+								</ul>
+							</div>
 			                </td>
-			                <td>
-			                  <button type="submit" class="btn btn-default">
-			                    remove
-			                  </button>
+			                <td class="p-t-0">
+			                 
+			                    <a class=" icon icon-squared-cross pull-right"></a>
+			                  
 			                </td>
 			              </tr>
 			              <tr>
@@ -169,108 +160,66 @@
 			                  </h5>
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control" name="">
-			                      <option value="">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+								<div class="btn-group" uib-dropdown>
+									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+										<span class="caret"></span>
+										<span class="sr-only">1</span>
+									</button>
+									<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+										<li role="menuitem"><a href="#">1</a></li>
+										<li role="menuitem"><a href="#">2</a></li>
+										<li role="menuitem"><a href="#">3</a></li>
+										<li role="menuitem"><a href="#">4</a></li>
+										<li role="menuitem"><a href="#">5</a></li>
+										<li role="menuitem"><a href="#">6</a></li>
+										<li role="menuitem"><a href="#">7</a></li>
+										<li role="menuitem"><a href="#">8</a></li>
+										<li role="menuitem"><a href="#">9</a></li>
+									</ul>
+								</div>
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control">
-			                      <option value="1">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+							<div class="btn-group" uib-dropdown>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<span class="caret"></span>
+									<span class="sr-only">1</span>
+								</button>
+								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+									<li role="menuitem"><a href="#">1</a></li>
+									<li role="menuitem"><a href="#">2</a></li>
+									<li role="menuitem"><a href="#">3</a></li>
+									<li role="menuitem"><a href="#">4</a></li>
+									<li role="menuitem"><a href="#">5</a></li>
+									<li role="menuitem"><a href="#">6</a></li>
+									<li role="menuitem"><a href="#">7</a></li>
+									<li role="menuitem"><a href="#">8</a></li>
+									<li role="menuitem"><a href="#">9</a></li>
+								</ul>
+							</div>
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control" name="">
-			                      <option value="1">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+							<div class="btn-group" uib-dropdown>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<span class="caret"></span>
+									<span class="sr-only">1</span>
+								</button>
+								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+									<li role="menuitem"><a href="#">1</a></li>
+									<li role="menuitem"><a href="#">2</a></li>
+									<li role="menuitem"><a href="#">3</a></li>
+									<li role="menuitem"><a href="#">4</a></li>
+									<li role="menuitem"><a href="#">5</a></li>
+									<li role="menuitem"><a href="#">6</a></li>
+									<li role="menuitem"><a href="#">7</a></li>
+									<li role="menuitem"><a href="#">8</a></li>
+									<li role="menuitem"><a href="#">9</a></li>
+								</ul>
+							</div>
 			                </td>
-			                <td>
-			                  <button type="submit" class="btn btn-default">
-			                    remove
-			                  </button>
+			                <td class="p-t-0">
+			                 
+			                    <a class=" icon icon-squared-cross pull-right"></a>
+			                  
 			                </td>
 			              </tr>
 			              <tr>
@@ -280,108 +229,66 @@
 			                  </h5>
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control" name="">
-			                      <option value="">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+							<div class="btn-group" uib-dropdown>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<span class="caret"></span>
+									<span class="sr-only">1</span>
+								</button>
+								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+									<li role="menuitem"><a href="#">1</a></li>
+									<li role="menuitem"><a href="#">2</a></li>
+									<li role="menuitem"><a href="#">3</a></li>
+									<li role="menuitem"><a href="#">4</a></li>
+									<li role="menuitem"><a href="#">5</a></li>
+									<li role="menuitem"><a href="#">6</a></li>
+									<li role="menuitem"><a href="#">7</a></li>
+									<li role="menuitem"><a href="#">8</a></li>
+									<li role="menuitem"><a href="#">9</a></li>
+								</ul>
+							</div>
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control">
-			                      <option value="1">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+							<div class="btn-group" uib-dropdown>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<span class="caret"></span>
+									<span class="sr-only">1</span>
+								</button>
+								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+									<li role="menuitem"><a href="#">1</a></li>
+									<li role="menuitem"><a href="#">2</a></li>
+									<li role="menuitem"><a href="#">3</a></li>
+									<li role="menuitem"><a href="#">4</a></li>
+									<li role="menuitem"><a href="#">5</a></li>
+									<li role="menuitem"><a href="#">6</a></li>
+									<li role="menuitem"><a href="#">7</a></li>
+									<li role="menuitem"><a href="#">8</a></li>
+									<li role="menuitem"><a href="#">9</a></li>
+								</ul>
+							</div>
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control" name="">
-			                      <option value="1">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+							<div class="btn-group" uib-dropdown>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<span class="caret"></span>
+									<span class="sr-only">1</span>
+								</button>
+								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+									<li role="menuitem"><a href="#">1</a></li>
+									<li role="menuitem"><a href="#">2</a></li>
+									<li role="menuitem"><a href="#">3</a></li>
+									<li role="menuitem"><a href="#">4</a></li>
+									<li role="menuitem"><a href="#">5</a></li>
+									<li role="menuitem"><a href="#">6</a></li>
+									<li role="menuitem"><a href="#">7</a></li>
+									<li role="menuitem"><a href="#">8</a></li>
+									<li role="menuitem"><a href="#">9</a></li>
+								</ul>
+							</div>
 			                </td>
-			                <td>
-			                  <button type="submit" class="btn btn-default">
-			                    remove
-			                  </button>
+			                <td class="p-t-0">
+			                 
+			                    <a class=" icon icon-squared-cross pull-right"></a>
+			                  
 			                </td>
 			              </tr>
 			              <tr>
@@ -391,108 +298,67 @@
 			                  </h5>
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control" name="">
-			                      <option value="">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+								<div class="btn-group" uib-dropdown>
+									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+										<span class="caret"></span>
+										<span class="sr-only">1</span>
+									</button>
+									<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+										<li role="menuitem"><a href="#">1</a></li>
+										<li role="menuitem"><a href="#">2</a></li>
+										<li role="menuitem"><a href="#">3</a></li>
+										<li role="menuitem"><a href="#">4</a></li>
+										<li role="menuitem"><a href="#">5</a></li>
+										<li role="menuitem"><a href="#">6</a></li>
+										<li role="menuitem"><a href="#">7</a></li>
+										<li role="menuitem"><a href="#">8</a></li>
+										<li role="menuitem"><a href="#">9</a></li>
+									</ul>
+								</div>
+							
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control">
-			                      <option value="1">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+							<div class="btn-group" uib-dropdown>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<span class="caret"></span>
+									<span class="sr-only">1</span>
+								</button>
+								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+									<li role="menuitem"><a href="#">1</a></li>
+									<li role="menuitem"><a href="#">2</a></li>
+									<li role="menuitem"><a href="#">3</a></li>
+									<li role="menuitem"><a href="#">4</a></li>
+									<li role="menuitem"><a href="#">5</a></li>
+									<li role="menuitem"><a href="#">6</a></li>
+									<li role="menuitem"><a href="#">7</a></li>
+									<li role="menuitem"><a href="#">8</a></li>
+									<li role="menuitem"><a href="#">9</a></li>
+								</ul>
+							</div>
 			                </td>
 			                <td>
-			                  <div class="form-group">
-			                    <select class="form-control" name="">
-			                      <option value="1">
-			                        1
-			                      </option>
-			                      <option value="2">
-			                        2
-			                      </option>
-			                      <option value="3">
-			                        3
-			                      </option>
-			                      <option value="4">
-			                        4
-			                      </option>
-			                      <option value="5">
-			                        5
-			                      </option>
-			                      <option value="6">
-			                        6
-			                      </option>
-			                      <option value="7">
-			                        7
-			                      </option>
-			                      <option value="8">
-			                        8
-			                      </option>
-			                      <option value="9">
-			                        9
-			                      </option>
-			                    </select>
-			                  </div>
+							<div class="btn-group" uib-dropdown>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<span class="caret"></span>
+									<span class="sr-only">1</span>
+								</button>
+								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
+									<li role="menuitem"><a href="#">1</a></li>
+									<li role="menuitem"><a href="#">2</a></li>
+									<li role="menuitem"><a href="#">3</a></li>
+									<li role="menuitem"><a href="#">4</a></li>
+									<li role="menuitem"><a href="#">5</a></li>
+									<li role="menuitem"><a href="#">6</a></li>
+									<li role="menuitem"><a href="#">7</a></li>
+									<li role="menuitem"><a href="#">8</a></li>
+									<li role="menuitem"><a href="#">9</a></li>
+								</ul>
+							</div>
 			                </td>
-			                <td>
-			                  <button type="submit" class="btn btn-default">
-			                    remove
-			                  </button>
+			                <td class="p-t-0">
+			                 
+			                    <a class=" icon icon-squared-cross pull-right"></a>
+			                  
 			                </td>
 			              </tr>
 			            </tbody>

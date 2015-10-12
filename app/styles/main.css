@@ -12,6 +12,12 @@
 ul.dropdown-menu{
 	width:94%;
 }
+.modal-header{
+	border-bottom:none !important;
+}
+h3 span{
+	font-weight:100;
+}
 select.form-control{
 	height: 26px;
 	
@@ -29,7 +35,17 @@ select.form-control{
 .modal-header .close {
   margin-top: 4px;
 }
-
+span.icon , a.icon{
+	font-size: 1.3em !important;
+}
+td div.btn-group.dropdown{
+	margin-top:7px;
+}
+td a.icon {
+	
+	top:12px;
+	position: relative;
+}
 
 /* navbar */
 .app-navbar {
