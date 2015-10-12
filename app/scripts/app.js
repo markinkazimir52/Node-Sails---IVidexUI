@@ -15,19 +15,19 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+	  'ui.bootstrap',
+	  'ui.bootstrap.popover',
+	  'ui.bootstrap.typeahead'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/patient', {
+        templateUrl: 'views/patient.html',
+        controller: 'PatientCtrl'
       })
       .otherwise({
         redirectTo: '/'

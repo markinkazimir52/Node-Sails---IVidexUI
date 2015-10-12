@@ -1,23 +1,82 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+  <div class="row">
+    <div class="col-md-3">
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+      <div class="list-group m-b-md">
+        <a href="rx.html" class="list-group-item active">
+          <span class="icon icon-chevron-thin-right pull-right"></span>
+          prescriptions
+        </a>
+        <a href="ex.html" class="list-group-item">
+          <span class="icon icon-chevron-thin-right pull-right"></span>
+          exercises
+        </a>
+        <a href="pr.html" class="list-group-item">
+          <span class="icon icon-chevron-thin-right pull-right"></span>
+          protocols
+        </a>
+      </div>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+      
+    </div>
+	<script type="text/ng-template" id="customTemplate.html">
+		<a >
+			<span ng-bind-html="match.label |
+uibTypeaheadHighlight:query"></span>
+		</a> 
+	</script>
+	
+    <div class="col-md-6">
+		<form class="p-b">
+			<input ng-model="selected" 
+    uib-typeahead="state for state in states | filter:$viewValue | limitTo:30"  type="text" class="input-lg form-control"
+	typeahead-template-url="customTemplate.html"
+	 placeholder="search patient">
+		</form>
+     
+    </div>
+    <div class="col-md-3">
+      <div class="panel panel-default m-b-md hidden-xs">
+        <div class="panel-body">
+        <h5 class="m-t-0">Active Users</h5>
+        <ul class="media-list media-list-stream">
+          <li class="media m-b">
+          
+             
+          
+            <div class="media-body">
+				 <span class="icon icon-user lg"></span>
+              <strong>Suzan Thornton</strong> 
+              <div class="media-body-actions">
+                <button class="btn btn-primary-outline btn-sm">
+                 Open</button>
+              </div>
+            </div>
+          </li>
+         <li class="media m-b">
+         
+            
+         
+           <div class="media-body">
+			 <span class="icon icon-user lg"></span>
+             <strong>Alexis Goldsmith</strong> 
+             <div class="media-body-actions">
+               <a href="#/patient"class="btn btn-primary-outline btn-sm">
+                Open</a>
+             </div>
+           </div>
+         </li>
+        </ul>
+        </div>
+        <div class="panel-footer">
+          <a class="btn btn-primary-outline w-full" href="#">View All</a>
+        </div>
+      </div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+          © 2015 ividex corp.
+          </div>
+      </div>
+    </div>
+  </div>

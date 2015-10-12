@@ -9,8 +9,19 @@
   background-color: #fff;
   border-color: #d3e0e9;
 }
-
-
+ul.dropdown-menu{
+	width:94%;
+}
+select.form-control{
+	height: 26px;
+	
+	color: #333;
+	font-weight: 400;
+	border: thin solid #00A993;
+	
+	top: 6px;
+	position: relative
+}
 /* general overrides */
 .list-group-item .glyphicon {
   line-height: 1.4;

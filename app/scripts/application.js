@@ -18,7 +18,7 @@ $(function () {
       instance.options.viewport.padding = getRight()
     }
   })
-
+/*
   $('[data-toggle="popover"]').popover({
     template: '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content p-x-0"></div></div>',
     title: '',
@@ -52,7 +52,7 @@ $(function () {
       }, 1)
     }
   })
-
+*/
 })
 
 $(document).on('click', '.js-gotoMsgs', function () {
