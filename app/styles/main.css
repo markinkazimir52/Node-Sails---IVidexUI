@@ -5,6 +5,10 @@
  */
 
 /* docs overrides */
+button#split-button.btn.btn-primary-outline.p-t-0.p-b-0{
+	color:#222;
+	font-weight:100;
+}
 .highlight {
   background-color: #fff;
   border-color: #d3e0e9;
@@ -41,9 +45,9 @@ span.icon , a.icon{
 td div.btn-group.dropdown{
 	margin-top:7px;
 }
-td a.icon {
+td a.btn-xs {
 	
-	top:12px;
+	top:16px;
 	position: relative;
 }
 
