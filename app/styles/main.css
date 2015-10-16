@@ -9,6 +9,22 @@ button#split-button.btn.btn-primary-outline.p-t-0.p-b-0{
 	color:#222;
 	font-weight:100;
 }
+button#split-button.btn.btn-primary-outline.p-t-0.p-b-0:hover{
+	background-color:#fff;
+	cursor:initial;
+}
+
+tr.inactive{
+	background-color:#fafafa;
+	opacity:0.3;
+}
+tr.inactive:hover{
+	background-color:#fafafa;
+	opacity:1;
+}
+tr.inactive td h5{
+	color:#888;
+}
 .highlight {
   background-color: #fff;
   border-color: #d3e0e9;

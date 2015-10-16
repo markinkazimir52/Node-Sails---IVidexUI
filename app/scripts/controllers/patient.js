@@ -9,6 +9,8 @@
  */
 angular.module('iVidexApp')
   .controller('PatientCtrl', function ($scope, $uibModal) {
+	  
+	  $scope.areas= ['item1', 'item2', 'item3'];
 	  $scope.items = ['item1', 'item2', 'item3'];
 	  $scope.open = function (size) {
 
@@ -20,7 +22,10 @@ angular.module('iVidexApp')
 	        resolve: {
 	          items: function () {
 	            return $scope.items;
-	          }
+	          },
+			  areas: function(){
+				  return $scope.areas;
+			  }
 	        }
 	      });
 
@@ -33,18 +38,20 @@ angular.module('iVidexApp')
 	    
 		
   });
-angular.module('iVidexApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+  angular.module('iVidexApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, areas) {
 
-    $scope.items = items;
-    $scope.selected = {
-      item: $scope.items[0]
-    };
+     $scope.areas = areas;
+  
+      $scope.items = items;
+      $scope.selected = {
+        area: $scope.areas[0]
+      };
 
-    $scope.ok = function () {
-      $modalInstance.close($scope.selected.item);
-    };
+      $scope.ok = function () {
+        $modalInstance.close($scope.selected.area);
+      };
 
-    $scope.cancel = function () {
-      $modalInstance.dismiss('cancel');
-    };
-  });
+      $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+      };
+    });

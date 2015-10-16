@@ -5,12 +5,18 @@
           <div class="modal-body">
 			  <uib-tabset justified="true">
 			  <uib-tab heading="Therapy Areas">
+		  		<form class="p-b">
+		  			<input ng-model="selected.area" 
+		      uib-typeahead="area for area in areas | filter:$viewValue | limitTo:30"  type="text" class="input-lg form-control"
+		  	
+		  	 placeholder="search  therapy area">
+		  		</form>
 			  <ul>
                   <li ng-repeat="item in items">
                       <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
                   </li>
               </ul>
-              Selected: <b>{{ selected.item }}</b>
+              Selected: <b>{{ selected }}</b>
 			  
 			  </uib-tab>
 			  <uib-tab heading="Protocols">
@@ -59,7 +65,9 @@
 	           </div>
 	           <div class="well">
 	             <div class="pull-right">
-					 <span class="badge ">23 Logins</span> <br/><span style="font-style:italic;">since</span> <h3 class="m-t-0"><span class="rxDate">10/28/2015</span></h3>
+					 <h3 class="m-t-0"><span class="rxDate">10/28/2015</span></h3>
+					 Total logins <span class="badge ">23</span><br/>
+					 <span style="font-style:italic;">Last week </span><span class="badge ">5</span> 
 				 </div>
 	             <h3>
 	               torn ligament
@@ -70,7 +78,7 @@
 	             </div>
 	             <hr>
 	             <p>
-	               prescription text
+	               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
 	             </p>
 	           </div>
 	           <div class="page-header">
@@ -84,15 +92,15 @@
 	           </div>
 			   <table class="table">
 			            <tbody>
-			              <tr>
+			              <tr class="inactive">
 			                <td>
 			                  <h5>
-			                    Exercise Name Row 2
+			                    hamstring stretchs
 			                  </h5>
 			                </td>
 			                <td>
 								<div class="btn-group" uib-dropdown>
-									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">0</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 										<span class="caret"></span>
 										<span class="sr-only">1</span>
 									</button>
@@ -111,7 +119,7 @@
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">10</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 									<span class="caret"></span>
 									<span class="sr-only">1</span>
 								</button>
@@ -130,7 +138,7 @@
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">2</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 									<span class="caret"></span>
 									<span class="sr-only">1</span>
 								</button>
@@ -149,19 +157,19 @@
 			                </td>
 			                <td class="p-t-0">
 			                 
-			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>remove</span></a>
+			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
 			                  
 			                </td>
 			              </tr>
 			              <tr>
 			                <td>
 			                  <h5>
-			                    Exercise Name Row 2
+			                    pelvic tilting
 			                  </h5>
 			                </td>
 			                <td>
 								<div class="btn-group" uib-dropdown>
-									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">3</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 										<span class="caret"></span>
 										<span class="sr-only">1</span>
 									</button>
@@ -180,7 +188,7 @@
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">15</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 									<span class="caret"></span>
 									<span class="sr-only">1</span>
 								</button>
@@ -199,7 +207,7 @@
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">4</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 									<span class="caret"></span>
 									<span class="sr-only">1</span>
 								</button>
@@ -218,19 +226,19 @@
 			                </td>
 			                <td class="p-t-0">
 			                 
-			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>remove</span></a>
+			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
 			                  
 			                </td>
 			              </tr>
 			              <tr>
 			                <td>
 			                  <h5>
-			                    Exercise Name Row 2
+			                    standing hip abduction
 			                  </h5>
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">5</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 									<span class="caret"></span>
 									<span class="sr-only">1</span>
 								</button>
@@ -249,7 +257,7 @@
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">20</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 									<span class="caret"></span>
 									<span class="sr-only">1</span>
 								</button>
@@ -268,7 +276,7 @@
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">6</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 									<span class="caret"></span>
 									<span class="sr-only">1</span>
 								</button>
@@ -287,19 +295,19 @@
 			                </td>
 			                <td class="p-t-0">
 			                 
-			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>remove</span></a>
+			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
 			                  
 			                </td>
 			              </tr>
 			              <tr>
 			                <td>
 			                  <h5>
-			                    Exercise Name Row 2
+			                    unilateral squat isometric
 			                  </h5>
 			                </td>
 			                <td>
 								<div class="btn-group" uib-dropdown>
-									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">10</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 										<span class="caret"></span>
 										<span class="sr-only">1</span>
 									</button>
@@ -319,7 +327,7 @@
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">?</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 									<span class="caret"></span>
 									<span class="sr-only">1</span>
 								</button>
@@ -338,7 +346,7 @@
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">1</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">8 (+?)</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 									<span class="caret"></span>
 									<span class="sr-only">1</span>
 								</button>
@@ -357,7 +365,7 @@
 			                </td>
 			                <td class="p-t-0">
 			                 
-			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>remove</span></a>
+			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
 			                  
 			                </td>
 			              </tr>
@@ -387,8 +395,10 @@
     <div class="col-md-3">
 		<div class="panel panel-default m-b-md hidden-xs">
 			<div class="panel-body">
-				<a class=" btn btn-danger m-t-0 w-full">Archive</a><hr/>
 				<a class="btn btn-primary m-t-0 w-full">Save as protocol</a>
+				<hr/>
+				<a class=" btn btn-danger-outline m-t-0 w-full">Archive</a>
+				
 			</div>
 		</div>
 		<div class="panel panel-default m-b-md hidden-xs">

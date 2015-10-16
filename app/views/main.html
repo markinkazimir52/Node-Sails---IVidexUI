@@ -18,18 +18,13 @@
 
       
     </div>
-	<script type="text/ng-template" id="customTemplate.html">
-		<a >
-			<span ng-bind-html="match.label |
-uibTypeaheadHighlight:query"></span>
-		</a> 
-	</script>
+	
 	
     <div class="col-md-6">
 		<form class="p-b">
 			<input ng-model="selected" 
     uib-typeahead="state for state in states | filter:$viewValue | limitTo:30"  type="text" class="input-lg form-control"
-	typeahead-template-url="customTemplate.html"
+	typeahead-template-url="typeAhead.html"
 	 placeholder="search patient">
 		</form>
      

@@ -98,18 +98,15 @@ END MOBILE MENU
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-
+  
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-animate/angular-animate.js"></script>
     <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="../bower_components/angular-resource/angular-resource.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
     <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
-	
-	<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js" type="text/javascript" charset="utf-8"></script>
-	
-	
- 
+    <script src="../bower_components/angular-touch/angular-touch.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -118,10 +115,17 @@ END MOBILE MENU
 		<script src="scripts/app.js" type="text/javascript" charset="utf-8"></script>
 		<script src="scripts/controllers/main.js" type="text/javascript" charset="utf-8"></script>
 		<script src="scripts/controllers/patient.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/controllers/patientModal.js" type="text/javascript" charset="utf-8"></script>
 		<script src="scripts/controllers/menu-popover.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/controllers/login.js" type="text/javascript" charset="utf-8"></script>
 		
         <!-- endbuild -->
-   
+   	<script type="text/ng-template" id="typeAhead.html">
+   		<a ng-click="$event.preventDefault(); selected.area = area" >
+   			<span ng-bind-html="match.label |
+   uibTypeaheadHighlight:query"></span>
+   		</a> 
+   	</script>
    
     
     <script>
