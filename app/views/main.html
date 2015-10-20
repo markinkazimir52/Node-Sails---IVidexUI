@@ -22,12 +22,17 @@
 	
     <div class="col-md-6">
 		<form class="p-b">
-			<input ng-model="selected" 
-    uib-typeahead="state for state in states | filter:$viewValue | limitTo:30"  type="text" class="input-lg form-control"
+			<input  ng-model="customSelected"
+    uib-typeahead="user.email as user.email for user in Users | filter:$viewValue | limitTo:30"  type="text" class="input-lg form-control"
 	typeahead-template-url="typeAhead.html"
-	 placeholder="search patient">
+	typeahead-input-formatter="formatLabel($model)"
+	 placeholder="search patient" >
 		</form>
-     
+	    	<script type="text/ng-template" id="typeAhead.html">
+				<a ng-click="$event.preventDefault();">
+					<span ng-bind-html="match.model.firstName | uibTypeaheadHighlight:query"></span> <span ng-bind-html="match.model.lastName | uibTypeaheadHighlight:query"></span>
+	    		</a> 
+	    	</script>
     </div>
     <div class="col-md-3">
       <div class="panel panel-default m-b-md hidden-xs">
@@ -40,7 +45,7 @@
           
             <div class="media-body">
 				 <span class="icon icon-user lg"></span>
-              <strong>Suzan Thornton</strong> 
+              <strong>{{Users[0]['firstName']}} {{Users[0]['lastName']}}</strong> 
               <div class="media-body-actions">
                 <button class="btn btn-primary-outline btn-sm">
                  Open</button>
@@ -53,7 +58,7 @@
          
            <div class="media-body">
 			 <span class="icon icon-user lg"></span>
-             <strong>Alexis Goldsmith</strong> 
+             <strong>{{Users[1]['firstName']}} {{Users[1]['lastName']}}</strong> 
              <div class="media-body-actions">
                <a href="#/patient"class="btn btn-primary-outline btn-sm">
                 Open</a>

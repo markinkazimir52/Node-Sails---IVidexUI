@@ -1,21 +1,21 @@
   <div class="container-content-middle">
-    <form role="form" class="m-x-auto text-center app-login-form">
+    <form role="form"  class="m-x-auto text-center app-login-form">
 
       <span class="app-brand m-b-lg">
        
       </span>
 
       <div class="form-group">
-        <input class="form-control" placeholder="Username">
+        <input ng-model="user" class="form-control"  placeholder="Username">
       </div>
 
       <div class="form-group m-b-md">
-        <input type="password" class="form-control" placeholder="Password">
+        <input ng-model="pass" type="password" class="form-control" placeholder="Password">
       </div>
 
       <div class="m-b-lg">
-        <a class="btn btn-primary" href="#/main">Log In</a>
-        <button class="btn btn-default">Sign up</button>
+        <button class="btn btn-primary" ng-disabled="loading" ng-click="login(user,pass)">Log In</button>
+        <button class="btn btn-default" >Sign up</button>
       </div>
 
       <footer class="screen-login">

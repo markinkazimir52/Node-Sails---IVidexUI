@@ -19,7 +19,8 @@ angular
 	  'ui.bootstrap.popover',
 	  'ui.bootstrap.typeahead',
 	  'ui.bootstrap.dropdown',
-	  'ui.bootstrap.modal'
+	  'ui.bootstrap.modal',
+	  'ngProgressLite'
   ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -8,7 +8,17 @@
  * Controller of the iVidexApp
  */
 angular.module('iVidexApp')
-  .controller('MainCtrl', function ($scope) {
-	  $scope.selected = undefined;
-	    $scope.states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+  .controller('MainCtrl', function ($rootScope,$scope) {
+	  $rootScope.Users=$scope.Users;
+	  $scope.selected = [];
+	  $scope.show=function(data){
+		  console.log(data);
+	  }
+$scope.formatLabel = function(model) {
+    for (var i=0; i< $scope.Users.length; i++) {
+      if (model === $scope.Users[i].email) {
+        return $scope.Users[i].firstName + " "+$scope.Users[i].lastName ;
+      }
+    }
+  }
   });

@@ -20,6 +20,7 @@
      
 	<link href="../toolkit/toolkit.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
+	<link rel="stylesheet" href="../bower_components/ngprogress-lite/ngprogress-lite.css" type="text/css" media="screen">
 	<!-- endbuild -->
     <style>
       /* note: this is a hack for ios iframe for bootstrap themes shopify page */
@@ -107,6 +108,7 @@ END MOBILE MENU
     <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="../bower_components/angular-touch/angular-touch.js"></script>
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+   <script src="../bower_components/ngprogress-lite/ngprogress-lite.js" type="text/javascript" charset="utf-8"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -118,14 +120,10 @@ END MOBILE MENU
 		<script src="scripts/controllers/patientModal.js" type="text/javascript" charset="utf-8"></script>
 		<script src="scripts/controllers/menu-popover.js" type="text/javascript" charset="utf-8"></script>
 		<script src="scripts/controllers/login.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/controllers/ividex_service.js" type="text/javascript" charset="utf-8"></script>
 		
         <!-- endbuild -->
-   	<script type="text/ng-template" id="typeAhead.html">
-   		<a ng-click="$event.preventDefault(); selected.area = area" >
-   			<span ng-bind-html="match.label |
-   uibTypeaheadHighlight:query"></span>
-   		</a> 
-   	</script>
+ 
    
     
     <script>
