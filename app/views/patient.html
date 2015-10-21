@@ -1,35 +1,4 @@
-  <script type="text/ng-template" id="myModalContent.html">
-          <div class="modal-header">
-              <h3 class="modal-title">Select a Therapy Area or a Protocol</h3>
-          </div>
-          <div class="modal-body">
-			  <uib-tabset justified="true">
-			  <uib-tab heading="Therapy Areas">
-		  		<form class="p-b">
-		  			<input ng-model="selected.area" 
-		      uib-typeahead="area for area in areas | filter:$viewValue | limitTo:30"  type="text" class="input-lg form-control"
-		  	
-		  	 placeholder="search  therapy area">
-		  		</form>
-			  <ul>
-                  <li ng-repeat="item in items">
-                      <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                  </li>
-              </ul>
-              Selected: <b>{{ selected }}</b>
-			  
-			  </uib-tab>
-			  <uib-tab heading="Protocols">
-			  </uib-tab>
-		  	</uib-tabset>
-			  
-			  
-          </div>
-          <div class="modal-footer">
-              <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-              <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-          </div>
-      </script>
+
 
 
 
@@ -44,11 +13,11 @@
         </a>
         <a href="ex.html" class="list-group-item">
           <span class="icon icon-chevron-thin-right pull-right"></span>
-          exercises
+          protocols
         </a>
         <a href="pr.html" class="list-group-item">
           <span class="icon icon-chevron-thin-right pull-right"></span>
-          protocols
+          videos
         </a>
       </div>
 
@@ -57,34 +26,42 @@
 
    
 	    <div class="col-md6 col-md-6" style="display: block;">
+			
 	           <div class="page-header m-t-0">
 	             <h1>
-	               Alexis Goldsmith
+	               {{currentPatient['firstName']}} {{currentPatient['lastName']}}
 	             </h1>
-	             <span class="label label-primary">alexis@gmail.com</span>
+	             <span class="label label-primary">{{currentPatient['email']}}</span>
+				 <div class="pull-right">
+				 Total logins <span class="badge ">23</span><br/>
+				 <span style="font-style:italic;">Last week </span><span class="badge ">5</span>
+				 </div>
+				 <div class="clearfix"></div>
 	           </div>
+		<div id="wrapper" ng-repeat="prescription in currentPatient.prescriptions">
 	           <div class="well">
 	             <div class="pull-right">
 					 <h3 class="m-t-0"><span class="rxDate">10/28/2015</span></h3>
-					 Total logins <span class="badge ">23</span><br/>
-					 <span style="font-style:italic;">Last week </span><span class="badge ">5</span> 
+					  <a class="btn btn-sm btn-default-outline m-t-0 ">Archive</a>
+					 <a class="btn btn-sm btn-primary-outline m-t-0 ">Save as protocol</a>
+					
 				 </div>
 	             <h3>
-	               torn ligament
+	               {{prescription['injury']}}
 	             </h3>
 	             <div>
 	               <span class="label label-default">surgery date</span>
-	               07/15/2015
+	                {{prescription['surgeryDate']}}
 	             </div>
 	             <hr>
 	             <p>
-	               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+	                {{prescription['text']}}
 	             </p>
 	           </div>
 	           <div class="page-header">
 				 
-	             <button type="submit" class="btn btn-primary  pull-right" ng-click="open('lg')">
-	             <span class="icon icon-plus"></span>  
+	             <button type="submit" class="btn btn-primary-outline   pull-right" ng-click="open('lg')">
+	            <span class="icon icon-add-to-list"></span>
 	             </button>
 	             <h3>
 	               Assigned Exercises
@@ -92,66 +69,66 @@
 	           </div>
 			   <table class="table">
 			            <tbody>
-			              <tr class="inactive">
+							<!-- class="inactive" -->
+			              <tr ng-repeat="exercise in prescription['exercises']" >
 			                <td>
 			                  <h5>
-			                    hamstring stretchs
+			                    {{exercise['name']}}
 			                  </h5>
 			                </td>
 			                <td>
 								<div class="btn-group" uib-dropdown>
-									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">0</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
+										{{exercise['holds']}}
+									</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 										<span class="caret"></span>
-										<span class="sr-only">1</span>
+										<span class="sr-only">{{exercise['holds']}}</span>
 									</button>
 									<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-										<li role="menuitem"><a href="#">1</a></li>
-										<li role="menuitem"><a href="#">2</a></li>
+										<li role="menuitem"><a href="#">0</a></li>
+										
 										<li role="menuitem"><a href="#">3</a></li>
-										<li role="menuitem"><a href="#">4</a></li>
+										
 										<li role="menuitem"><a href="#">5</a></li>
-										<li role="menuitem"><a href="#">6</a></li>
-										<li role="menuitem"><a href="#">7</a></li>
-										<li role="menuitem"><a href="#">8</a></li>
-										<li role="menuitem"><a href="#">9</a></li>
+										<li role="menuitem"><a href="#">10</a></li>
+										
 									</ul>
 								</div>
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">10</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
+									{{exercise['reps']}}
+								</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 									<span class="caret"></span>
-									<span class="sr-only">1</span>
+									<span class="sr-only">{{exercise['reps']}}</span>
 								</button>
 								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">1</a></li>
-									<li role="menuitem"><a href="#">2</a></li>
-									<li role="menuitem"><a href="#">3</a></li>
-									<li role="menuitem"><a href="#">4</a></li>
-									<li role="menuitem"><a href="#">5</a></li>
-									<li role="menuitem"><a href="#">6</a></li>
-									<li role="menuitem"><a href="#">7</a></li>
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">9</a></li>
+									<li role="menuitem"><a href="#">10</a></li>
+									<li role="menuitem"><a href="#">15</a></li>
+									<li role="menuitem"><a href="#">20</a></li>
+									
 								</ul>
 							</div>
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">2</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
+									{{exercise['weeks']}}
+								</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
 									<span class="caret"></span>
-									<span class="sr-only">1</span>
+									<span class="sr-only">{{exercise['weeks']}}</span>
 								</button>
 								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">1</a></li>
+									
 									<li role="menuitem"><a href="#">2</a></li>
-									<li role="menuitem"><a href="#">3</a></li>
+									
 									<li role="menuitem"><a href="#">4</a></li>
-									<li role="menuitem"><a href="#">5</a></li>
+									
 									<li role="menuitem"><a href="#">6</a></li>
-									<li role="menuitem"><a href="#">7</a></li>
+									
 									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">9</a></li>
+									<li role="menuitem"><a href="#">forever</a></li>
 								</ul>
 							</div>
 			                </td>
@@ -161,214 +138,7 @@
 			                  
 			                </td>
 			              </tr>
-			              <tr>
-			                <td>
-			                  <h5>
-			                    pelvic tilting
-			                  </h5>
-			                </td>
-			                <td>
-								<div class="btn-group" uib-dropdown>
-									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">3</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-										<span class="caret"></span>
-										<span class="sr-only">1</span>
-									</button>
-									<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-										<li role="menuitem"><a href="#">1</a></li>
-										<li role="menuitem"><a href="#">2</a></li>
-										<li role="menuitem"><a href="#">3</a></li>
-										<li role="menuitem"><a href="#">4</a></li>
-										<li role="menuitem"><a href="#">5</a></li>
-										<li role="menuitem"><a href="#">6</a></li>
-										<li role="menuitem"><a href="#">7</a></li>
-										<li role="menuitem"><a href="#">8</a></li>
-										<li role="menuitem"><a href="#">9</a></li>
-									</ul>
-								</div>
-			                </td>
-			                <td>
-							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">15</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-									<span class="caret"></span>
-									<span class="sr-only">1</span>
-								</button>
-								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">1</a></li>
-									<li role="menuitem"><a href="#">2</a></li>
-									<li role="menuitem"><a href="#">3</a></li>
-									<li role="menuitem"><a href="#">4</a></li>
-									<li role="menuitem"><a href="#">5</a></li>
-									<li role="menuitem"><a href="#">6</a></li>
-									<li role="menuitem"><a href="#">7</a></li>
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">9</a></li>
-								</ul>
-							</div>
-			                </td>
-			                <td>
-							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">4</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-									<span class="caret"></span>
-									<span class="sr-only">1</span>
-								</button>
-								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">1</a></li>
-									<li role="menuitem"><a href="#">2</a></li>
-									<li role="menuitem"><a href="#">3</a></li>
-									<li role="menuitem"><a href="#">4</a></li>
-									<li role="menuitem"><a href="#">5</a></li>
-									<li role="menuitem"><a href="#">6</a></li>
-									<li role="menuitem"><a href="#">7</a></li>
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">9</a></li>
-								</ul>
-							</div>
-			                </td>
-			                <td class="p-t-0">
-			                 
-			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
-			                  
-			                </td>
-			              </tr>
-			              <tr>
-			                <td>
-			                  <h5>
-			                    standing hip abduction
-			                  </h5>
-			                </td>
-			                <td>
-							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">5</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-									<span class="caret"></span>
-									<span class="sr-only">1</span>
-								</button>
-								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">1</a></li>
-									<li role="menuitem"><a href="#">2</a></li>
-									<li role="menuitem"><a href="#">3</a></li>
-									<li role="menuitem"><a href="#">4</a></li>
-									<li role="menuitem"><a href="#">5</a></li>
-									<li role="menuitem"><a href="#">6</a></li>
-									<li role="menuitem"><a href="#">7</a></li>
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">9</a></li>
-								</ul>
-							</div>
-			                </td>
-			                <td>
-							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">20</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-									<span class="caret"></span>
-									<span class="sr-only">1</span>
-								</button>
-								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">1</a></li>
-									<li role="menuitem"><a href="#">2</a></li>
-									<li role="menuitem"><a href="#">3</a></li>
-									<li role="menuitem"><a href="#">4</a></li>
-									<li role="menuitem"><a href="#">5</a></li>
-									<li role="menuitem"><a href="#">6</a></li>
-									<li role="menuitem"><a href="#">7</a></li>
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">9</a></li>
-								</ul>
-							</div>
-			                </td>
-			                <td>
-							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">6</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-									<span class="caret"></span>
-									<span class="sr-only">1</span>
-								</button>
-								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">1</a></li>
-									<li role="menuitem"><a href="#">2</a></li>
-									<li role="menuitem"><a href="#">3</a></li>
-									<li role="menuitem"><a href="#">4</a></li>
-									<li role="menuitem"><a href="#">5</a></li>
-									<li role="menuitem"><a href="#">6</a></li>
-									<li role="menuitem"><a href="#">7</a></li>
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">9</a></li>
-								</ul>
-							</div>
-			                </td>
-			                <td class="p-t-0">
-			                 
-			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
-			                  
-			                </td>
-			              </tr>
-			              <tr>
-			                <td>
-			                  <h5>
-			                    unilateral squat isometric
-			                  </h5>
-			                </td>
-			                <td>
-								<div class="btn-group" uib-dropdown>
-									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">10</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-										<span class="caret"></span>
-										<span class="sr-only">1</span>
-									</button>
-									<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-										<li role="menuitem"><a href="#">1</a></li>
-										<li role="menuitem"><a href="#">2</a></li>
-										<li role="menuitem"><a href="#">3</a></li>
-										<li role="menuitem"><a href="#">4</a></li>
-										<li role="menuitem"><a href="#">5</a></li>
-										<li role="menuitem"><a href="#">6</a></li>
-										<li role="menuitem"><a href="#">7</a></li>
-										<li role="menuitem"><a href="#">8</a></li>
-										<li role="menuitem"><a href="#">9</a></li>
-									</ul>
-								</div>
-							
-			                </td>
-			                <td>
-							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">?</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-									<span class="caret"></span>
-									<span class="sr-only">1</span>
-								</button>
-								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">1</a></li>
-									<li role="menuitem"><a href="#">2</a></li>
-									<li role="menuitem"><a href="#">3</a></li>
-									<li role="menuitem"><a href="#">4</a></li>
-									<li role="menuitem"><a href="#">5</a></li>
-									<li role="menuitem"><a href="#">6</a></li>
-									<li role="menuitem"><a href="#">7</a></li>
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">9</a></li>
-								</ul>
-							</div>
-			                </td>
-			                <td>
-							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">8 (+?)</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-									<span class="caret"></span>
-									<span class="sr-only">1</span>
-								</button>
-								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">1</a></li>
-									<li role="menuitem"><a href="#">2</a></li>
-									<li role="menuitem"><a href="#">3</a></li>
-									<li role="menuitem"><a href="#">4</a></li>
-									<li role="menuitem"><a href="#">5</a></li>
-									<li role="menuitem"><a href="#">6</a></li>
-									<li role="menuitem"><a href="#">7</a></li>
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">9</a></li>
-								</ul>
-							</div>
-			                </td>
-			                <td class="p-t-0">
-			                 
-			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
-			                  
-			                </td>
-			              </tr>
+			             
 			            </tbody>
 			            <thead>
 			              <tr>
@@ -391,13 +161,13 @@
 			            </thead>
 				</table>
 		</div>
+		</div>
      
     <div class="col-md-3">
 		<div class="panel panel-default m-b-md hidden-xs">
 			<div class="panel-body">
-				<a class="btn btn-primary m-t-0 w-full">Save as protocol</a>
-				<hr/>
-				<a class=" btn btn-danger-outline m-t-0 w-full">Archive</a>
+				<a class="btn btn-primary m-t-0 w-full">New Prescription</a>
+				
 				
 			</div>
 		</div>

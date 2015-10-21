@@ -16,7 +16,7 @@ angular.module('iVidexApp').factory('API',['$http','$rootScope','$q', function (
 				          		cache: false
 				        	});
 						} ,
-					getToken: function ()
+					/* getToken: function ()
 						{						
 							var path="/user/jwt";
 							return $http.get(server+path,data, {
@@ -25,10 +25,30 @@ angular.module('iVidexApp').factory('API',['$http','$rootScope','$q', function (
 				          				},
 				          		cache: false
 				        	});
-						} ,
+						} ,*/
 						
 						getUsers: function(){
 							var path="/role/1"
+							return $http.get(server+path,{
+				          		headers: {
+				            		"Content-Type": "application/json",
+									"access_token":$rootScope.token
+				          				},
+								cache:false
+							});
+						},
+						getPatient: function(id){
+							var path="/user/"+id+"/active-rx"
+							return $http.get(server+path,{
+				          		headers: {
+				            		"Content-Type": "application/json",
+									"access_token":$rootScope.token
+				          				},
+								cache:false
+							});
+						},
+						getAreas: function(){
+							var path="/therapy_area"
 							return $http.get(server+path,{
 				          		headers: {
 				            		"Content-Type": "application/json",

@@ -8,11 +8,18 @@
  * Controller of the iVidexApp
  */
 angular.module('iVidexApp')
-  .controller('MainCtrl', function ($rootScope,$scope) {
+  .controller('MainCtrl', function (API,$location,$rootScope,$scope) {
 	  $rootScope.Users=$scope.Users;
 	  $scope.selected = [];
-	  $scope.show=function(data){
-		  console.log(data);
+	  $scope.getPatient=function(userObj){
+		  var id=userObj['id'];
+		  $rootScope.currentPatient=userObj
+		  API.getPatient(id).then(function(res){
+			  
+			  $rootScope.currentPatient.prescriptions=res.data;
+			  $location.url('patient/'+id);
+		  }, function(reason){console.log(reason)});
+		  
 	  }
 $scope.formatLabel = function(model) {
     for (var i=0; i< $scope.Users.length; i++) {

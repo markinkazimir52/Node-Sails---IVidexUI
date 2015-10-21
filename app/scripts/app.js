@@ -32,7 +32,8 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/patient', {
+	  
+      .when('/patient/:id', {
         templateUrl: 'views/patient.html',
         controller: 'PatientCtrl'
       })

@@ -32,6 +32,15 @@ tr.inactive td h5{
 ul.dropdown-menu{
 	width:94%;
 }
+.modal-content ul.nav-tabs li{
+	font-size:2em;
+}
+.modal-content ul.nav-tabs li a{
+	
+}
+.modal-content ul.nav-tabs {
+	
+}
 .modal-header{
 	border-bottom:none !important;
 }
@@ -48,6 +57,12 @@ select.form-control{
 	top: 6px;
 	position: relative
 }
+
+ul.areas li{
+	font-size: 1.5em;
+	list-style: none
+}
+ul.areas{}
 /* general overrides */
 .list-group-item .glyphicon {
   line-height: 1.4;

@@ -5,21 +5,21 @@ angular.module('iVidexApp').controller('LoginCtrl', ['$rootScope','$scope','API'
 	$scope.login= function(user,pass){
   	  
 		$scope.loading=true;
-		data={
+		var formData={
     		"email": user,
     		"password": pass
 			};
 
-		API.login(data).then(
+		API.login(formData).then(
 			function(res){
 				if(res.status==200)
 					{
 						console.log(res);
 						$rootScope.User=res.data;
 						
-						API.getToken().then(function(res){
+						/* API.getToken().then(function(res){
 							$rootScope.token=res.data['token'];
-						}, function(reason){console.log(reason)});
+						}, function(reason){console.log(reason)}); */
 						
 						API.getUsers().then(function(users){
 								if(users.status=200){
