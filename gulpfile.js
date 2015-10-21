@@ -42,12 +42,12 @@ gulp.task('watch', function () {
 
 gulp.task('docs', ['server'], function () {
   gulp.src(__filename)
-    .pipe(open({uri: 'http://localhost:9001/docs/'}))
+    .pipe(open({uri: 'http://localhost:9001/app/'}))
 })
 
 gulp.task('server', function () {
   connect.server({
-    root: 'docs',
+    root: '',
     port: 9001,
     livereload: true
   })
