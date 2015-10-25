@@ -4635,7 +4635,6 @@ button.list-group-item-danger.active:focus {
 .panel {
   margin-bottom: 22px;
   background-color: #fff;
-  border: 1px solid transparent;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -4871,7 +4870,6 @@ button.list-group-item-danger.active:focus {
 }
 .panel-default > .panel-heading {
   color: #1e3948;
-  background-color: #f5f5f5;
   border-color: #f2f2f2;
 }
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
@@ -4889,7 +4887,6 @@ button.list-group-item-danger.active:focus {
 }
 .panel-primary > .panel-heading {
   color: #fff;
-  background-color: #31a99d;
   border-color: #31a99d;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
@@ -4907,7 +4904,6 @@ button.list-group-item-danger.active:focus {
 }
 .panel-success > .panel-heading {
   color: #3c763d;
-  background-color: #dff0d8;
   border-color: #d6e9c6;
 }
 .panel-success > .panel-heading + .panel-collapse > .panel-body {
@@ -4925,7 +4921,6 @@ button.list-group-item-danger.active:focus {
 }
 .panel-info > .panel-heading {
   color: #31708f;
-  background-color: #d9edf7;
   border-color: #bce8f1;
 }
 .panel-info > .panel-heading + .panel-collapse > .panel-body {
@@ -4943,7 +4938,6 @@ button.list-group-item-danger.active:focus {
 }
 .panel-warning > .panel-heading {
   color: #8a6d3b;
-  background-color: #fcf8e3;
   border-color: #faebcc;
 }
 .panel-warning > .panel-heading + .panel-collapse > .panel-body {
@@ -4961,7 +4955,6 @@ button.list-group-item-danger.active:focus {
 }
 .panel-danger > .panel-heading {
   color: #a94442;
-  background-color: #f2dede;
   border-color: #ebccd1;
 }
 .panel-danger > .panel-heading + .panel-collapse > .panel-body {
