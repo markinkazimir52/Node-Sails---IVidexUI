@@ -8,16 +8,11 @@
  * Controller of the iVidexApp
  */
 angular.module('iVidexApp')
-  .controller('PatientCtrl', function ($log,API,$rootScope,$scope, $uibModal) {
+  .controller('ProtocolsCtrl', function ($log,API,$rootScope,$scope, $uibModal) {
 	  $scope.currentPatient=$rootScope.currentPatient;
 	  //$scope.areas= ['area1', 'area2', 'area3'];
 	
-	  $scope.getDate = function(date){
-	  	var newDate= new angular.mock.TzDate(0, date);
-		var result="";
-		result=(newDate.getMonth()+1).toString()+"/"+newDate.getDate().toString()+"/"+newDate.getFullYear().toString();
-		return result;
-	  }
+	 
 	 $scope.open = function (size) {
 		
 	

@@ -69,7 +69,7 @@
 		<script type="text/ng-template" id="myPopoverTemplate.html">
 			  <div class="p-x-0">
 				  <div class="nav nav-stacked" style="width: 200px">
-					  <li><a style="border-radius:4px" href="login/index.html">Logout</a></li>
+					  <li><a style="border-radius:4px" ui-sref="login">Logout</a></li>
 				  </div>
 			  </div>
 		</script>
@@ -93,7 +93,7 @@ END MOBILE MENU
 
 
 
-<div ng-view class="container p-t-md">
+<div ui-view class="container p-t-md">
  
 </div>
 
@@ -108,6 +108,8 @@ END MOBILE MENU
     <script src="../bower_components/angular-touch/angular-touch.js"></script>
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="../bower_components/ngprogress-lite/ngprogress-lite.js"></script>
+   <script src="../bower_components/angular-ui-router/release/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
+   <script src="../bower_components/angular-mocks/angular-mocks.js" type="text/javascript" charset="utf-8"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -120,6 +122,11 @@ END MOBILE MENU
 		<script src="scripts/controllers/menu-popover.js" type="text/javascript" charset="utf-8"></script>
 		<script src="scripts/controllers/login.js" type="text/javascript" charset="utf-8"></script>
 		<script src="scripts/controllers/ividex_service.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/controllers/links.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/controllers/protocols.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/controllers/tips.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/controllers/videos.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/controllers/promises.js" type="text/javascript" charset="utf-8"></script>
 		
         <!-- endbuild -->
  

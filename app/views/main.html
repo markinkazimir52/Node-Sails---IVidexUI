@@ -2,17 +2,25 @@
     <div class="col-md-3">
 
       <div class="list-group m-b-md">
-        <a href="rx.html" class="list-group-item active">
+        <a ui-sref="main" class="list-group-item " ng-class="{ active: $state.includes('main') }">
           <span class="icon icon-chevron-thin-right pull-right"></span>
           prescriptions
         </a>
-        <a href="ex.html" class="list-group-item">
+        <a href="#/protocols" class="list-group-item">
           <span class="icon icon-chevron-thin-right pull-right"></span>
           protocols
         </a>
-        <a href="pr.html" class="list-group-item">
+        <a href="#/videos" class="list-group-item">
           <span class="icon icon-chevron-thin-right pull-right"></span>
           videos
+        </a>
+        <a href="#/tips" class="list-group-item">
+          <span class="icon icon-chevron-thin-right pull-right"></span>
+          tips
+        </a>
+        <a href="#/links" class="list-group-item">
+          <span class="icon icon-chevron-thin-right pull-right"></span>
+          links
         </a>
       </div>
 
@@ -31,7 +39,13 @@
 	    	
     </div>
     <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-body">
+            <a class="btn btn-primary w-full" href="#">New Patient</a>
+            </div>
+        </div>
       <div class="panel panel-default m-b-md hidden-xs">
+          
         <div class="panel-body">
         <h5 class="m-t-0">Active Users</h5>
         <ul class="media-list media-list-stream">
@@ -56,16 +70,14 @@
 			 <span class="icon icon-user lg"></span>
              <strong>{{Users[1]['firstName']}} {{Users[1]['lastName']}}</strong> 
              <div class="media-body-actions">
-               <a href="#/patient"class="btn btn-primary-outline btn-sm" ng-click="getPatient(Users[1])">
+               <a class="btn btn-primary-outline btn-sm" ng-click="getPatient(Users[1])">
                 Open</a>
              </div>
            </div>
          </li>
         </ul>
         </div>
-        <div class="panel-footer">
-          <a class="btn btn-primary-outline w-full" href="#">View All</a>
-        </div>
+       
       </div>
 
 

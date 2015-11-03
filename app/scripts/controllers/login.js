@@ -1,9 +1,9 @@
-angular.module('iVidexApp').controller('LoginCtrl', ['$rootScope','$scope','API','$location',function ($rootScope,$scope,API,$location) {
+angular.module('iVidexApp').controller('LoginCtrl', ['$rootScope','$scope', '$state' , 'API','$location','ngProgressLite',function ($rootScope,$scope,$state,API,$location,ngProgressLite) {
 	$scope.loading=false;
-	  $scope.user="alexis@gmail.com";
-	  $scope.pass="12345678";
+	  $scope.user="peter@philipphysicaltherapy.com";
+	  $scope.pass="iVidex2015";
 	$scope.login= function(user,pass){
-  	  
+		ngProgressLite.start();
 		$scope.loading=true;
 		var formData={
     		"email": user,
@@ -16,15 +16,15 @@ angular.module('iVidexApp').controller('LoginCtrl', ['$rootScope','$scope','API'
 					{
 						console.log(res);
 						$rootScope.User=res.data;
-						
+						$state.go('main');
 						/* API.getToken().then(function(res){
 							$rootScope.token=res.data['token'];
-						}, function(reason){console.log(reason)}); */
-						
+						}, function(reason){console.log(reason)});
+							
 						API.getUsers().then(function(users){
 								if(users.status=200){
 									$rootScope.Users=users.data.users;
-								$location.url('main/');
+								$state.go('main');
 								}else{console.log(res)}
 						
 							},
@@ -32,6 +32,10 @@ angular.module('iVidexApp').controller('LoginCtrl', ['$rootScope','$scope','API'
 								console.log(reason);
 								$scope.loading=false;
 							});
+							
+							 */
+						
+
 						
 							}
 						
@@ -46,7 +50,7 @@ angular.module('iVidexApp').controller('LoginCtrl', ['$rootScope','$scope','API'
 				$scope.loading=false;
 			}
 			else{
-				alert("generic error at login.js line 23");
+				alert("generic error at login.js line 49");
 				$scope.loading=false;
 			}
 			console.log(reason)

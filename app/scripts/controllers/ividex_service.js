@@ -56,6 +56,36 @@ angular.module('iVidexApp').factory('API',['$http','$rootScope','$q', function (
 				          				},
 								cache:false
 							});
+						},
+						getVideos: function(){
+							var path="/video"
+							return $http.get(server+path,{
+				          		headers: {
+				            		"Content-Type": "application/json",
+									"access_token":$rootScope.token
+				          				},
+								cache:false
+							});
+						},
+						getTips: function(){
+							var path="/tip"
+							return $http.get(server+path,{
+				          		headers: {
+				            		"Content-Type": "application/json",
+									"access_token":$rootScope.token
+				          				},
+								cache:false
+							});
+						},
+						getLinks: function(){
+							var path="/link"
+							return $http.get(server+path,{
+				          		headers: {
+				            		"Content-Type": "application/json",
+									"access_token":$rootScope.token
+				          				},
+								cache:false
+							});
 						}
 					    
 					
