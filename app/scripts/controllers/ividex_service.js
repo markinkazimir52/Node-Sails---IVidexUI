@@ -28,7 +28,7 @@ angular.module('iVidexApp').factory('API',['$http','$rootScope','$q', function (
 						} ,*/
 						
 						getUsers: function(){
-							var path="/role/1"
+							var path="/role/patient"
 							return $http.get(server+path,{
 				          		headers: {
 				            		"Content-Type": "application/json",
