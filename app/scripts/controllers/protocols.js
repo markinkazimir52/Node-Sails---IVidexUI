@@ -8,11 +8,11 @@
  * Controller of the iVidexApp
  */
 angular.module('iVidexApp')
-  .controller('ProtocolsCtrl', function ($log,API,$rootScope,$scope, $uibModal) {
-	  $scope.currentPatient=$rootScope.currentPatient;
+  .controller('ProtocolsCtrl', function ($log,API,$rootScope,$scope, $uibModal,ngProgressLite) {
+	  $scope.protocols=$rootScope.Protocols;
 	  //$scope.areas= ['area1', 'area2', 'area3'];
 	
-	 
+	  ngProgressLite.done();
 	 $scope.open = function (size) {
 		
 	
@@ -20,7 +20,7 @@ angular.module('iVidexApp')
 			   var a=res.data;
 		      var modalInstance = $uibModal.open({
 		        animation: true,
-		        templateUrl: 'views/myModalContent.html',
+		        templateUrl: 'views/protocolModalContent.html',
 		        controller: 'ModalInstanceCtrl',
 		        size: size,
 		        resolve: {

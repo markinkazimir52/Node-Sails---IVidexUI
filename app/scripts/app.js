@@ -81,6 +81,110 @@ angular
 		            // You can pair a controller to your template. There *must* be a template to pair with.
 		            controller: 'LoginCtrl'
 		          })
+  				.state('protocols', {
+
+  		            // With abstract set to true, that means this state can not be explicitly activated.
+  		            // It can only be implicitly activated by activating one of it's children.
+  		            abstract: false,
+
+  		            // This abstract state will prepend '/contacts' onto the urls of all its children.
+  		            url: '/protocols',
+
+  		            // Example of loading a template from a file. This is also a top level state,
+  		            // so this template file will be loaded and then inserted into the ui-view
+  		            // within index.html.
+  		            templateUrl: 'views/protocols.html',
+
+  		            // Use `resolve` to resolve any asynchronous controller dependencies
+  		            // *before* the controller is instantiated. In this case, since contacts
+  		            // returns a promise, the controller will wait until contacts.all() is
+  		            // resolved before instantiation. Non-promise return values are considered
+  		            // to be resolved immediately.
+		            resolve:{
+						promise:loadProtocols
+		            },
+
+  		            // You can pair a controller to your template. There *must* be a template to pair with.
+  		            controller: 'ProtocolsCtrl'
+  		          })
+				.state('videos', {
+
+		            // With abstract set to true, that means this state can not be explicitly activated.
+		            // It can only be implicitly activated by activating one of it's children.
+		            abstract: false,
+
+		            // This abstract state will prepend '/contacts' onto the urls of all its children.
+		            url: '/videos',
+
+		            // Example of loading a template from a file. This is also a top level state,
+		            // so this template file will be loaded and then inserted into the ui-view
+		            // within index.html.
+		            templateUrl: 'views/videos.html',
+
+		            // Use `resolve` to resolve any asynchronous controller dependencies
+		            // *before* the controller is instantiated. In this case, since contacts
+		            // returns a promise, the controller will wait until contacts.all() is
+		            // resolved before instantiation. Non-promise return values are considered
+		            // to be resolved immediately.
+	            	resolve:{
+	            		promise:loadVideos
+	            	},
+
+		            // You can pair a controller to your template. There *must* be a template to pair with.
+		            controller: 'VideosCtrl'
+		          })
+  				.state('tips', {
+
+  		            // With abstract set to true, that means this state can not be explicitly activated.
+  		            // It can only be implicitly activated by activating one of it's children.
+  		            abstract: false,
+
+  		            // This abstract state will prepend '/contacts' onto the urls of all its children.
+  		            url: '/tips',
+
+  		            // Example of loading a template from a file. This is also a top level state,
+  		            // so this template file will be loaded and then inserted into the ui-view
+  		            // within index.html.
+  		            templateUrl: 'views/tips.html',
+
+  		            // Use `resolve` to resolve any asynchronous controller dependencies
+  		            // *before* the controller is instantiated. In this case, since contacts
+  		            // returns a promise, the controller will wait until contacts.all() is
+  		            // resolved before instantiation. Non-promise return values are considered
+  		            // to be resolved immediately.
+	            	resolve:{
+	            		promise:loadTips
+	            	},
+
+  		            // You can pair a controller to your template. There *must* be a template to pair with.
+  		            controller: 'TipsCtrl'
+  		          })
+  				.state('links', {
+
+  		            // With abstract set to true, that means this state can not be explicitly activated.
+  		            // It can only be implicitly activated by activating one of it's children.
+  		            abstract: false,
+
+  		            // This abstract state will prepend '/contacts' onto the urls of all its children.
+  		            url: '/links',
+
+  		            // Example of loading a template from a file. This is also a top level state,
+  		            // so this template file will be loaded and then inserted into the ui-view
+  		            // within index.html.
+  		            templateUrl: 'views/links.html',
+
+  		            // Use `resolve` to resolve any asynchronous controller dependencies
+  		            // *before* the controller is instantiated. In this case, since contacts
+  		            // returns a promise, the controller will wait until contacts.all() is
+  		            // resolved before instantiation. Non-promise return values are considered
+  		            // to be resolved immediately.
+	            	resolve:{
+	            		promise:loadLinks
+	            	},
+
+  		            // You can pair a controller to your template. There *must* be a template to pair with.
+  		            controller: 'LinksCtrl'
+  		          })
 				.state('main', {
 
 		            // With abstract set to true, that means this state can not be explicitly activated.

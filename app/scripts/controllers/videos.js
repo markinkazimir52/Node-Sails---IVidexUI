@@ -8,10 +8,7 @@
  * Controller of the iVidexApp
  */
 angular.module('iVidexApp')
-  .controller('VideosCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('VideosCtrl', function ($scope, promise,ngProgressLite) {
+	  $scope.videos=promise.data;
+	  ngProgressLite.done();
   });

@@ -15,11 +15,11 @@
           <span class="icon icon-chevron-thin-right pull-right"></span>
           protocols
         </a>
-        <a href="#/videos" class="list-group-item">
+        <a ui-sref="videos" class="list-group-item" ng-class="{ active: $state.includes('videos') }">
           <span class="icon icon-chevron-thin-right pull-right"></span>
           videos
         </a>
-        <a href="#/tips" class="list-group-item">
+        <a ui-sref="tips" class="list-group-item" ng-class="{ active: $state.includes('tips') }" >
           <span class="icon icon-chevron-thin-right pull-right"></span>
           tips
         </a>
@@ -36,121 +36,27 @@
 			
 	           <div class="page-header m-t-0">
 	             <h1>
-	               Protocol Name
+	               Links
 	             </h1>
 	             
 	           </div>
 		<div id="wrapper">
 	           
-	           <div class="page-header">
+	           <div class="page-header" ng-repeat="link in links">
 				 
-	             <button type="submit" class="btn btn-primary-outline   pull-right" ng-click="open('lg')">
-	            <span class="icon icon-add-to-list"></span>
-	             </button>
+	            
 	             <h3>
-	               Assigned Exercises
+	               {{link['title']}} - <small>{{link['url']}}</small>
 	             </h3>
 	           </div>
-			   <table class="table">
-			            <tbody>
-							<!-- class="inactive" -->
-			              <tr ng-repeat="" >
-			                <td>
-			                  <h5>
-			                    {{exercise['name']}}
-			                  </h5>
-			                </td>
-			                <td>
-								<div class="btn-group" uib-dropdown>
-									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-										{{exercise['holds']}}
-									</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-										<span class="caret"></span>
-										<span class="sr-only">{{exercise['holds']}}</span>
-									</button>
-									<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-										<li role="menuitem"><a href="#">0</a></li>
-										
-										<li role="menuitem"><a href="#">3</a></li>
-										
-										<li role="menuitem"><a href="#">5</a></li>
-										<li role="menuitem"><a href="#">10</a></li>
-										
-									</ul>
-								</div>
-			                </td>
-			                <td>
-							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-									{{exercise['reps']}}
-								</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-									<span class="caret"></span>
-									<span class="sr-only">{{exercise['reps']}}</span>
-								</button>
-								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">10</a></li>
-									<li role="menuitem"><a href="#">15</a></li>
-									<li role="menuitem"><a href="#">20</a></li>
-									
-								</ul>
-							</div>
-			                </td>
-			                <td>
-							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-									{{exercise['weeks']}}
-								</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-									<span class="caret"></span>
-									<span class="sr-only">{{exercise['weeks']}}</span>
-								</button>
-								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									
-									<li role="menuitem"><a href="#">2</a></li>
-									
-									<li role="menuitem"><a href="#">4</a></li>
-									
-									<li role="menuitem"><a href="#">6</a></li>
-									
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">forever</a></li>
-								</ul>
-							</div>
-			                </td>
-			                <td class="p-t-0">
-			                 
-			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
-			                  
-			                </td>
-			              </tr>
-			             
-			            </tbody>
-			            <thead>
-			              <tr>
-			                <th>
-			                  <br>
-			                </th>
-			                <th>
-			                  Holds
-			                </th>
-			                <th>
-			                  Reps
-			                </th>
-			                <th>
-			                  Weeks
-			                </th>
-			                <th>
-			                  <br>
-			                </th>
-			              </tr>
-			            </thead>
-				</table>
+			 
 		</div>
 		</div>
      
     <div class="col-md-3">
 		<div class="panel panel-default m-b-md hidden-xs">
 			<div class="panel-body">
-				<a class="btn btn-primary m-t-0 w-full">Save</a>
+				<a class="btn btn-primary m-t-0 w-full">Add Link</a>
 				
 				
 			</div>

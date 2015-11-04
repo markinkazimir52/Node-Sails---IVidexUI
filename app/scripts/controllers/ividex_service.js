@@ -1,5 +1,6 @@
 angular.module('iVidexApp').factory('API',['$http','$rootScope','$q', function ($http,$rootScope,$q) 
 	{
+		//var server="http://localhost:1337";
 		var server="http://52.91.185.218:1337";
 		return {
 			
@@ -79,6 +80,16 @@ angular.module('iVidexApp').factory('API',['$http','$rootScope','$q', function (
 						},
 						getLinks: function(){
 							var path="/link"
+							return $http.get(server+path,{
+				          		headers: {
+				            		"Content-Type": "application/json",
+									"access_token":$rootScope.token
+				          				},
+								cache:false
+							});
+						},
+						getProtocols: function(){
+							var path="/protocol"
 							return $http.get(server+path,{
 				          		headers: {
 				            		"Content-Type": "application/json",

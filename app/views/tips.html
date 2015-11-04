@@ -15,7 +15,7 @@
           <span class="icon icon-chevron-thin-right pull-right"></span>
           protocols
         </a>
-        <a href="#/videos" class="list-group-item">
+        <a ui-sref="videos" class="list-group-item" ng-class="{ active: $state.includes('videos') }">
           <span class="icon icon-chevron-thin-right pull-right"></span>
           videos
         </a>
@@ -23,7 +23,7 @@
           <span class="icon icon-chevron-thin-right pull-right"></span>
           tips
         </a>
-        <a href="#/links" class="list-group-item">
+        <a ui-sref="links" class="list-group-item" ng-class="{ active: $state.includes('links') }" >
           <span class="icon icon-chevron-thin-right pull-right"></span>
           links
         </a>
@@ -36,121 +36,30 @@
 			
 	           <div class="page-header m-t-0">
 	             <h1>
-	               Protocol Name
+	               Tips
 	             </h1>
 	             
 	           </div>
-		<div id="wrapper">
+		<div id="wrapper" ng-repeat="tip in tips">
 	           
 	           <div class="page-header">
 				 
-	             <button type="submit" class="btn btn-primary-outline   pull-right" ng-click="open('lg')">
-	            <span class="icon icon-add-to-list"></span>
-	             </button>
+	             
+	            <span class="icon btn-primary-outline icon-check pull-left m-r" ng-show="tip['active']"></span>
+	            
 	             <h3>
-	               Assigned Exercises
+	               {{tip['title']}}
 	             </h3>
 	           </div>
-			   <table class="table">
-			            <tbody>
-							<!-- class="inactive" -->
-			              <tr ng-repeat="" >
-			                <td>
-			                  <h5>
-			                    {{exercise['name']}}
-			                  </h5>
-			                </td>
-			                <td>
-								<div class="btn-group" uib-dropdown>
-									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-										{{exercise['holds']}}
-									</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-										<span class="caret"></span>
-										<span class="sr-only">{{exercise['holds']}}</span>
-									</button>
-									<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-										<li role="menuitem"><a href="#">0</a></li>
-										
-										<li role="menuitem"><a href="#">3</a></li>
-										
-										<li role="menuitem"><a href="#">5</a></li>
-										<li role="menuitem"><a href="#">10</a></li>
-										
-									</ul>
-								</div>
-			                </td>
-			                <td>
-							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-									{{exercise['reps']}}
-								</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-									<span class="caret"></span>
-									<span class="sr-only">{{exercise['reps']}}</span>
-								</button>
-								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">10</a></li>
-									<li role="menuitem"><a href="#">15</a></li>
-									<li role="menuitem"><a href="#">20</a></li>
-									
-								</ul>
-							</div>
-			                </td>
-			                <td>
-							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-									{{exercise['weeks']}}
-								</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
-									<span class="caret"></span>
-									<span class="sr-only">{{exercise['weeks']}}</span>
-								</button>
-								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									
-									<li role="menuitem"><a href="#">2</a></li>
-									
-									<li role="menuitem"><a href="#">4</a></li>
-									
-									<li role="menuitem"><a href="#">6</a></li>
-									
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">forever</a></li>
-								</ul>
-							</div>
-			                </td>
-			                <td class="p-t-0">
-			                 
-			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
-			                  
-			                </td>
-			              </tr>
-			             
-			            </tbody>
-			            <thead>
-			              <tr>
-			                <th>
-			                  <br>
-			                </th>
-			                <th>
-			                  Holds
-			                </th>
-			                <th>
-			                  Reps
-			                </th>
-			                <th>
-			                  Weeks
-			                </th>
-			                <th>
-			                  <br>
-			                </th>
-			              </tr>
-			            </thead>
-				</table>
+			   <p ng-bind-html="tip['body']" ng-class="{'open':tip['open'], 'closed':!tip['open']}"></p>
+			   <span class="pull-right"><a ng-click="expand($index)">[ more ]</a></span>
 		</div>
 		</div>
      
     <div class="col-md-3">
 		<div class="panel panel-default m-b-md hidden-xs">
 			<div class="panel-body">
-				<a class="btn btn-primary m-t-0 w-full">Save</a>
+				<a class="btn btn-primary m-t-0 w-full">Add Tip</a>
 				
 				
 			</div>

@@ -57,7 +57,21 @@ select.form-control{
 	top: 6px;
 	position: relative
 }
+a {
+	cursor:pointer;
+}
+p.open{
+	max-height:300px;
+		overflow:hidden;
+	transition: max-height 0.350s;
+}
 
+
+p.closed{
+	max-height:50px;
+	overflow:hidden;
+	transition: max-height 0.350s;
+}
 ul.areas li{
 	font-size: 1.5em;
 	list-style: none
