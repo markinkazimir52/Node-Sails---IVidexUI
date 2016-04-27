@@ -56,10 +56,10 @@
             <div class="media-body">
 				 <span class="icon icon-user lg"></span>
               <strong>{{Users[0]['firstName']}} {{Users[0]['lastName']}}</strong> 
-              <div class="media-body-actions">
-                <button class="btn btn-primary-outline btn-sm" ng-click="getPatient(Users[0])">
+              
+                <button class="btn btn-primary-outline btn-sm pull-right" ng-click="getPatient(Users[0])">
                  Open</button>
-              </div>
+              
             </div>
           </li>
          <li class="media m-b">
@@ -69,10 +69,8 @@
            <div class="media-body">
 			 <span class="icon icon-user lg"></span>
              <strong>{{Users[1]['firstName']}} {{Users[1]['lastName']}}</strong> 
-             <div class="media-body-actions">
-               <a class="btn btn-primary-outline btn-sm" ng-click="getPatient(Users[1])">
-                Open</a>
-             </div>
+               <button class="btn btn-primary-outline btn-sm pull-right" ng-click="getPatient(Users[1])">
+                Open</button>
            </div>
          </li>
         </ul>

@@ -46,7 +46,7 @@
 			   <table class="table">
 			            <tbody>
 							<!-- class="inactive" -->
-			              <tr ng-repeat="video in videos" >
+			              <tr ng-repeat="video in videos | orderBy: 'title'" >
 			                
 			                <td>
 								{{video['title']}}

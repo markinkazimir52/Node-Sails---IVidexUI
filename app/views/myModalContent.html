@@ -10,7 +10,7 @@
     
 				    <uib-accordion-group heading="{{ item['name'] }}" ng-repeat="item in items">
 					  <ul class="areas p-t-md">
-		                  <li ng-repeat="video in item.videos">
+		                  <li ng-repeat="video in item.videos | orderBy: 'title'">
 		                      <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ video['title'] }}</a>
 		                  </li>
 		              </ul>
