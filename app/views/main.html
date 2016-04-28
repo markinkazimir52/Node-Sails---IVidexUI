@@ -1,3 +1,5 @@
+
+ 
   <div class="row">
     <div class="col-md-3">
 
@@ -41,7 +43,7 @@
     <div class="col-md-3">
           <div class="panel panel-default">
             <div class="panel-body">
-            <a class="btn btn-primary w-full" href="#">New Patient</a>
+            <a class="btn btn-primary w-full" ng-click="open('lg')">New Patient</a>
             </div>
         </div>
       <div class="panel panel-default m-b-md hidden-xs">
@@ -49,30 +51,20 @@
         <div class="panel-body">
         <h5 class="m-t-0">Active Users</h5>
         <ul class="media-list media-list-stream">
-          <li class="media m-b">
+          <li class="media m-b" ng-repeat="user in Users | orderBy:'-id'  | limitTo:7">
           
              
           
             <div class="media-body">
 				 <span class="icon icon-user lg"></span>
-              <strong>{{Users[0]['firstName']}} {{Users[0]['lastName']}}</strong> 
-              
-                <button class="btn btn-primary-outline btn-sm pull-right" ng-click="getPatient(Users[0])">
+              <strong>{{user['firstName']}} {{user['lastName']}}</strong> 
+            
+                <button class="btn btn-primary-outline btn-sm pull-right" ng-click="getPatient(user)">
                  Open</button>
               
             </div>
           </li>
-         <li class="media m-b">
-         
-            
-         
-           <div class="media-body">
-			 <span class="icon icon-user lg"></span>
-             <strong>{{Users[1]['firstName']}} {{Users[1]['lastName']}}</strong> 
-               <button class="btn btn-primary-outline btn-sm pull-right" ng-click="getPatient(Users[1])">
-                Open</button>
-           </div>
-         </li>
+        
         </ul>
         </div>
        

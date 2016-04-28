@@ -1,0 +1,32 @@
+		
+		   
+		  <div class="modal-header">
+              <h3 class="modal-title">New Protocol</h3>
+          </div>
+          <div class="modal-body">
+			  
+		      <form ng-submit="newProtocol()"  name="myForm" class="m-x-auto text-center app-login-form">
+
+		        <span class="app-brand m-b-lg">
+       
+		        </span>
+			<fieldset>  
+		        <div class="form-group">
+		          <input name="name" ng-model="name" class="form-control"  placeholder="Protocol Name" required>
+		        </div>
+			</fieldset>
+			
+
+		       
+
+		        
+
+		        
+		      </form>
+			  
+          </div>
+          <div class="modal-footer">
+            
+              <button class="btn btn-primary-outline" type="button" ng-click="cancel()">Cancel</button>
+			  <button class="btn btn-primary" type="button" ng-click="newProtocol()" ng-disabled="myForm.$invalid" >Next</button>
+          </div>

@@ -1,0 +1,37 @@
+		
+		   
+		  <div class="modal-header">
+              <h3 class="modal-title">New Link</h3>
+          </div>
+          <div class="modal-body">
+			  
+		      <form  name="myForm" class="m-x-auto text-center app-login-form">
+
+		        <span class="app-brand m-b-lg">
+       
+		        </span>
+			<fieldset>  
+		        <div class="form-group">
+		          <input name="title" ng-model="title" class="form-control"  placeholder="Link Name" required>
+		        </div>
+			</fieldset>
+			<fieldset>  
+		        <div class="form-group">
+		          <input name="url" ng-model="url" class="form-control"  placeholder="URL" required>
+		        </div>
+			</fieldset>
+			
+
+		       
+
+		        
+
+		        
+		      </form>
+			  
+          </div>
+          <div class="modal-footer">
+            
+              <button class="btn btn-primary-outline" type="button" ng-click="cancel()">Cancel</button>
+			  <button class="btn btn-primary" type="button" ng-click="newLink()" ng-disabled="myForm.$invalid" >Add Link</button>
+          </div>

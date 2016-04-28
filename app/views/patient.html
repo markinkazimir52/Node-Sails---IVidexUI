@@ -38,36 +38,62 @@
 	             <h1>
 	               {{currentPatient['firstName']}} {{currentPatient['lastName']}}
 	             </h1>
-	             <span class="label label-primary">{{currentPatient['email']}}</span>
-				 <div class="pull-right">
-				 Total logins <span class="badge ">23</span><br/>
-				 <span >Last week </span><span class="badge ">5</span>
+	             <span class="label"><a href="mailto:{{currentPatient['email']}}">{{currentPatient['email']}}</a></span>
+				 &nbsp;<span ng-click="deleteAuth(currentPatient['id'])" class="btn btn-xs btn-danger-outline">delete</span>
+				 <div  class="pull-right" ng-show="auth.loaded">
+				 Last week <span class="badge ">{{currentPatient.lastWeekAttempts.length}}</span><br/>
+				 <span >Total logins </span><span class="badge ">{{currentPatient.attempts.length}}</span>
 				 </div>
 				 <div class="clearfix"></div>
 	           </div>
-		<div id="wrapper" ng-repeat="prescription in currentPatient.prescriptions">
-	           <div class="well">
-	             <div class="pull-right">
+		<div  id="wrapper" ng-repeat="prescription in currentPatient.prescriptions | filter:mainFlt">
+			 <form name="testForm2" ng-submit="savePrescription(prescription['id'],prescription['surgeryDate'],prescription['injury'],prescription['text'])">
+			 <div class="well" ng-keyup="pressed=''" ng-keydown="pressed = $event">
+	           
+				 <div class="pull-right">
 					 <h3 class="m-t-0"><span class="rxDate">{{getDate(prescription['createdAt'])}}</span></h3>
-					  <a class="btn btn-sm btn-default-outline m-t-0 ">Archive</a>
-					 <a class="btn btn-sm btn-primary-outline m-t-0 ">Save as protocol</a>
+					  <a ng-show="prescription.status==prescription.id"  ng-class="{'btn-danger':pressed.keyCode==91,'btn-default-outline':pressed.keyCode!=91}" class="btn btn-sm  m-t-0 " ng-click="closeSingleBtn(prescription,$index,pressed.keyCode)"><span ng-show="pressed.keyCode!=91">close</span><span ng-show="pressed.keyCode==91">delete</span></a>
+					  <a ng-show="prescription['exercises'].length >0" ng-hide="prescription.status==prescription.id || prescription['exercises'].length ==0" ng-class="{'btn-danger':pressed.keyCode==91,'btn-default-outline':pressed.keyCode!=91}" class="btn btn-sm  m-t-0 " ng-click="archiveBtn(prescription,false,$index,pressed.keyCode)"><span ng-show="pressed.keyCode!=91">archive</span><span ng-show="pressed.keyCode==91">delete</span></a>
+					 <button ng-disabled="testForm2.$invalid" ng-hide="prescription['exercises'].length >0" ng-class="{'btn-primary-outline':action=='saveAs','btn-primary':action=='save' }" type="submit" class="btn btn-sm w-full m-t-0 ">save</button>
+					 <a  ng-show="prescription['exercises'].length >0" ng-class="{'btn-primary-outline':action=='saveAs','btn-primary':action=='save' }" ng-click="saveSaveAs(prescription);" class="btn btn-sm btn-primary-outline m-t-0 ">{{actionLabel}}</a>
 					
 				 </div>
-	             <h3>
-	               {{prescription['injury']}}
-	             </h3>
-	             <div>
-	               <span class="label label-default">surgery date</span>
-	                {{getDate(prescription['surgeryDate'])}}
-	             </div>
-	             <hr>
-	             <p>
-	                {{prescription['text']}}
-	             </p>
-	           </div>
+			
+			   
+			        <H3 ng-click="console.log(prescription['injury'])" type="text" contenteditable name="email" ng-model="prescription['injury']" ui-validate="'isEmpty($value)'" > </h3>
+			            
+       
+	   
+       <div>
+         <span class="label label-default">surgery date</span>
+         
+      
+		 			<input type="hidden" value="false" ng-model="prescription['calOpen']">
+					
+	               <input ui-validate="'isEmpty($value)'" name="date" class="form-control" type="text" uib-datepicker-popup="{{format}}"  							ng-model="prescription['surgeryDate']"  is-open="prescription['calOpen']"  							datepicker-options="dateOptions"  ng-click="prescription['calOpen']=true"							close-text="Close" />
+	         </div>
+	           
+				 
+       <hr>
+       <p name="text" contenteditable ng-model="prescription['text']" ui-validate="true">
+          
+       </p>
+			   
+			    
+				 
+			<!-- testForm2.email: {{testForm2.email.$valid}}<br>
+			testForm2.date {{testForm2.date.$valid}}<br>
+			testForm2.text {{testForm2.text.$valid}}<br>
+			testForm2.$valid {{testForm2.$valid}}<br>
+			testForm2.$submitted {{testForm2.$submitted}}
+				 -->
+			
+	          </div>
+			 </form>     
+			   
 	           <div class="page-header">
 				 
-	             <button type="submit" class="btn btn-primary-outline   pull-right" ng-click="open('lg')">
+	             <button type="submit" class="btn btn-primary-outline   pull-right" ng-disabled="action=='save'" ng-click="open('lg',prescription)">
 	            <span class="icon icon-plus"></span>
 	             </button>
 	             <h3>
@@ -85,63 +111,64 @@
 			                </td>
 			                <td>
 								<div class="btn-group" uib-dropdown>
-									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-										{{exercise['holds']}}
-									</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									
+									<button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+										
+										<span >{{exercise['holds']}}</span>
 										<span class="caret"></span>
-										<span class="sr-only">{{exercise['holds']}}</span>
 									</button>
 									<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-										<li role="menuitem"><a href="#">0</a></li>
+										<li role="menuitem"><a ng-click="exercise['holds']=0;updateHolds(0,exercise['id']);" href="javascript:event.preventDefault()">0</a></li>
 										
-										<li role="menuitem"><a href="#">3</a></li>
+										<li role="menuitem"><a ng-click="exercise['holds']=3;updateHolds(3,exercise['id'])" href="javascript:event.preventDefault()">3</a></li>
 										
-										<li role="menuitem"><a href="#">5</a></li>
-										<li role="menuitem"><a href="#">10</a></li>
+										<li role="menuitem"><a ng-click="exercise['holds']=5;updateHolds(5,exercise['id'])" href="javascript:event.preventDefault()">5</a></li>
+										<li role="menuitem"><a ng-click="exercise['holds']=10;updateHolds(10,exercise['id'])" href="javascript:event.preventDefault()">10</a></li>
 										
 									</ul>
 								</div>
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-									{{exercise['reps']}}
+								
 								</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									
+									<span class="">{{exercise['reps']}}</span>
 									<span class="caret"></span>
-									<span class="sr-only">{{exercise['reps']}}</span>
 								</button>
 								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">10</a></li>
-									<li role="menuitem"><a href="#">15</a></li>
-									<li role="menuitem"><a href="#">20</a></li>
+									<li role="menuitem"><a ng-click="exercise['reps']=10;updateReps(10,exercise['id'])" href="javascript:event.preventDefault()">10</a></li>
+									<li role="menuitem"><a ng-click="exercise['reps']=15;updateReps(15,exercise['id'])" href="javascript:event.preventDefault()">15</a></li>
+									<li role="menuitem"><a ng-click="exercise['reps']=20;updateReps(20,exercise['id'])" href="javascript:event.preventDefault()">20</a></li>
 									
 								</ul>
 							</div>
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-									{{exercise['weeks']}}
+								
 								</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									
+									<span class="" ng-show="exercise['weeks']<52">{{exercise['weeks']}}</span>
+									<span class="" ng-show="exercise['weeks']==52">forever</span>
 									<span class="caret"></span>
-									<span class="sr-only">{{exercise['weeks']}}</span>
 								</button>
 								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
 									
-									<li role="menuitem"><a href="#">2</a></li>
+									<li role="menuitem"><a ng-click="exercise['weeks']=2;updateWeeks(2,exercise['id'])" href="javascript:event.preventDefault()">2</a></li>
 									
-									<li role="menuitem"><a href="#">4</a></li>
+									<li role="menuitem"><a ng-click="exercise['weeks']=4;updateWeeks(4,exercise['id'])" href="javascript:event.preventDefault()">4</a></li>
 									
-									<li role="menuitem"><a href="#">6</a></li>
+									<li role="menuitem"><a ng-click="exercise['weeks']=6;updateWeeks(6,exercise['id'])" href="javascript:event.preventDefault()">6</a></li>
 									
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">forever</a></li>
+									<li role="menuitem"><a ng-click="exercise['weeks']=8;updateWeeks(8,exercise['id'])" href="javascript:event.preventDefault()">8</a></li>
+									<li role="menuitem"><a ng-click="exercise['weeks']=52;updateWeeks(52,exercise['id'])" href="javascript:event.preventDefault()">forever</a></li>
 								</ul>
 							</div>
 			                </td>
 			                <td class="p-t-0">
 			                 
-			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
+			                    <a ng-click="prescription['exercises'].splice($index,1);removeEx(exercise['id'])" class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
 			                  
 			                </td>
 			              </tr>
@@ -173,7 +200,7 @@
     <div class="col-md-3">
 		<div class="panel panel-default m-b-md hidden-xs">
 			<div class="panel-body">
-				<a class="btn btn-primary m-t-0 w-full">New Prescription</a>
+				<button ng-click="newPrescription()" class="btn btn-primary-outline m-t-0 w-full" >New Prescription</button>
 				
 				
 			</div>
@@ -182,14 +209,14 @@
         <div class="panel-body">
         <h5 class="m-t-0">Patient History</h5>
         <ul class="media-list media-list-stream">
-          <li class="media m-b">
+          <li class="media m-b"  ng-repeat="prescription in currentPatient.prescriptions | filter:{'active':false}">
             <div class="media-body">
 				<address>
-					<strong>hip replacement</strong> <br/>
-					<span class="icon icon-calendar lg"></span> 3/15/2014<br/>
+					<strong>{{prescription['injury']}}</strong> <br/>
+					<span class="icon icon-calendar lg"></span> {{prescription['createdAt']}}<br/>
             	</address>
               <div class="media-body-actions">
-                <button class="btn btn-primary-outline btn-sm">
+                <button ng-click="openSingle(prescription)" class="btn btn-primary-outline btn-sm">
                  Open</button>
               </div>
             </div>

@@ -33,12 +33,12 @@
 
    
 	    <div class="col-md6 col-md-6" style="display: block;">
-			
+					
 	           <div class="page-header m-t-0">
 	             <h1>
 	               Video Library
 	             </h1>
-	             
+	             <input  ng-model="filter" type="text" class="input-lg form-control" placeholder="filter videos" >
 	           </div>
 		<div id="wrapper">
 	           
@@ -46,7 +46,7 @@
 			   <table class="table">
 			            <tbody>
 							<!-- class="inactive" -->
-			              <tr ng-repeat="video in videos | orderBy: 'title'" >
+			              <tr ng-repeat="video in videos | filter:filter | orderBy: 'title'" >
 			                
 			                <td>
 								{{video['title']}}
@@ -55,7 +55,8 @@
 							{{video['url']}}
 			                </td>
 			                <td>
-							<p ng-bind-html="video['description']"></p>
+								<button ng-show="changed" style="position: relative;float: right;right: -50px" class="btn btn-xs btn-primary" ng-click="saveVideo(video,changed,$index)">save</button>
+							<p contenteditable ng-model="video['description']"></p>
 			                </td>
 			                
 			              </tr>

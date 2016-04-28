@@ -45,9 +45,11 @@
 	           <div class="page-header" ng-repeat="link in links">
 				 
 	            
-	             <h3>
+	             <h3 class="pull-left">
 	               {{link['title']}} - <small>{{link['url']}}</small>
 	             </h3>
+				  <button  class="btn btn-xs btn-primary pull-right m-r" ng-click="deleteLink(link['id'],$index)">delete</button> 
+				  <div class="clearfix"></div>
 	           </div>
 			 
 		</div>
@@ -56,7 +58,7 @@
     <div class="col-md-3">
 		<div class="panel panel-default m-b-md hidden-xs">
 			<div class="panel-body">
-				<a class="btn btn-primary m-t-0 w-full">Add Link</a>
+				<a ng-click="open('lg')" class="btn btn-primary m-t-0 w-full">Add Link</a>
 				
 				
 			</div>

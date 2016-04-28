@@ -1,3 +1,3 @@
-				<a ng-click="$event.preventDefault();">
+				<a ng-click="getPatient(match.model)" ng-controller="typeCtrl">
 					<span ng-bind-html="match.model.firstName | uibTypeaheadHighlight:query"></span> <span ng-bind-html="match.model.lastName | uibTypeaheadHighlight:query"></span>
 	    		</a> 

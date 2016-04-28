@@ -21,6 +21,8 @@ angular
 	  'ui.bootstrap.typeahead',
 	  'ui.bootstrap.dropdown',
 	  'ui.bootstrap.modal',
+	  'ui.bootstrap.datepicker',
+	  'ui.validate',
 	  'ngProgressLite'
   ]).run(
     [        '$rootScope', '$state', '$stateParams',
@@ -33,6 +35,10 @@ angular
       $rootScope.$state = $state;
       $rootScope.$stateParams = $stateParams;
     }]).config(
+		
+		
+		
+		
 		    [          '$stateProvider', '$urlRouterProvider',
 		      function ($stateProvider,   $urlRouterProvider) {
 
@@ -231,7 +237,9 @@ angular
   		            // returns a promise, the controller will wait until contacts.all() is
   		            // resolved before instantiation. Non-promise return values are considered
   		            // to be resolved immediately.
-		            
+		            resolve:{
+		            	promise:getPatient
+		            },
 
   		            // You can pair a controller to your template. There *must* be a template to pair with.
   		            controller: 'PatientCtrl'
@@ -241,7 +249,31 @@ angular
 
 	 }]).config(['ngProgressLiteProvider', function (ngProgressLiteProvider) {
 			ngProgressLiteProvider.settings.ease = 'ease-out';
-		}]);
+		}])
+
+		.directive("contenteditable", function() {
+		  return {
+		    restrict: "A",
+		    require: "ngModel",
+		    link: function(scope, element, attrs, ngModel) {
+					
+		      function read() {
+		        ngModel.$setViewValue(element.html());
+				scope.changed=true;
+		      }
+
+		      ngModel.$render = function() {
+		        element.html(ngModel.$viewValue || "");
+		      };
+
+		      element.bind("blur keyup change", function() {
+				  
+		        scope.$apply(read);
+				
+		      });
+		    }
+		  };
+		});
   /*
   .config(function ($routeProvider) {
     $routeProvider

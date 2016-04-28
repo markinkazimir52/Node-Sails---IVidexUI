@@ -11,7 +11,7 @@
 				    <uib-accordion-group heading="{{ item['name'] }}" ng-repeat="item in items">
 					  <ul class="areas p-t-md">
 		                  <li ng-repeat="video in item.videos | orderBy: 'title'">
-		                      <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ video['title'] }}</a>
+		                      <a href="#" ng-click="$event.preventDefault(); add(video)">{{ video['title'] }}</a>
 		                  </li>
 		              </ul>
 				    </uib-accordion-group>
@@ -23,14 +23,33 @@
              
 			  
 			  </uib-tab>
-			  <uib-tab heading="Protocols">
+			  <uib-tab heading="Protocols" ng-click="getProtocols()">
+			  <div ng-repeat="item in protocols" class="p-a-md"> 
+				  <button ng-click="addProtocol(item.exercises)" class="btn btn-primary-outline m-r m-l btn-sm pull-left" style="margin-top:6px">add</button>
+			<uib-accordion close-others="true" class="pull-left">
+  
+			    <uib-accordion-group heading="{{ item['name'] }}"  >
+				  <ul class="areas p-t-md">
+	                  <li ng-repeat="exercise in item.exercises">
+	                      <a href="#" ng-click="$event.preventDefault();">{{ exercise['name'] }}</a>
+						 <small> <span>H({{exercise['holds']}})</span>
+						  <span>R({{exercise['reps']}})</span>
+						  <span>W({{exercise['weeks']}})</span></small>
+	                  </li>
+	              </ul>
+			    </uib-accordion-group>
+  
+  
+			  </uib-accordion>
+			  <div class="clearfix"></div>
+		  </div>
 			  </uib-tab>
 		  	</uib-tabset>
 			  
 			  
           </div>
           <div class="modal-footer">
-               Selected: <b>{{ selected.item['name'] }}</b>
-              <button class="btn btn-primary-outline" type="button" ng-click="cancel()">Cancel</button>
-			  <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+               
+              <button class="btn btn-default-outline" type="button" ng-click="cancel()">close</button>
+			  
           </div>

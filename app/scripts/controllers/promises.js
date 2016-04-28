@@ -10,7 +10,38 @@
 var emptyPromise = ['$rootScope','$cookies','$q','$timeout','$state','$stateParams','API','ngProgressLite',function($rootScope,$cookies,$q, $timeout,$state,$stateParams,API,ngProgressLite) {
 var defer = $q.defer();
 }];
+var getPatient = ['$rootScope','$cookies','$q','$timeout','$state','$stateParams','API','ngProgressLite',function($rootScope,$cookies,$q, $timeout,$state,$stateParams,API,ngProgressLite) {
+	ngProgressLite.start();
+        	
+   var defer = $q.defer();  
+   console.log($stateParams);         
+   var id=$stateParams.id;
+  API.getPatient(id).then(function(res){
+	  
+	  //if($rootScope.currentPatient.attempts==undefined){
+		  API.getPatientInfo(id).then(function(resUser){
+			  $rootScope.currentPatient=resUser.data.auth;
+			  $rootScope.currentPatient.attempts=resUser.data.attempts;
+			  console.log($rootScope.currentPatient)
+			   $rootScope.currentPatient.prescriptions=res.data;
+			   defer.resolve({data:$rootScope.currentPatient}); 
+		  },function(reason){console.log('API.getPatient failed'); console.log(reason)});
+		
+		  //} else{
+		  //  console.log($rootScope.currentPatient)
+	  	 //	$rootScope.currentPatient.prescriptions=res.data;
+		// defer.resolve({data:$rootScope.currentPatient}); 
+	  //}
+	  
+	  
+	  
+	  
+  }, function(reason){console.log(reason);return defer.promise;  });
+  
 
+		
+	 return defer.promise;  	
+}];
 var loadPatients = ['$rootScope','$cookies','$q','$timeout','$state','$stateParams','API','ngProgressLite',function($rootScope,$cookies,$q, $timeout,$state,$stateParams,API,ngProgressLite) {
 	ngProgressLite.start();
         	
@@ -101,11 +132,14 @@ var loadVideos = ['$rootScope','$cookies','$q','$timeout','$state','$stateParams
         	
    var defer = $q.defer();           
 
-	API.getVideos().then(function(videos){
+	//API.getVideos().then(function(videos){
+	API.getAreas().then(function(videos){
 			if(videos.status=200){
-				$rootScope.videos=videos.data;
+				//$rootScope.videos=videos.data;
+				$rootScope.areas=videos.data;
 				
-				defer.resolve({data:$rootScope.videos}); 
+				//defer.resolve({data:$rootScope.videos}); 
+				defer.resolve({data:$rootScope.areas}); 
 			}else{console.log(res)}
 	
 		},

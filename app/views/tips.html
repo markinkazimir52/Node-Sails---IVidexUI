@@ -45,21 +45,30 @@
 	           <div class="page-header">
 				 
 	             
-	            <span class="icon btn-primary-outline icon-check pull-left m-r" ng-show="tip['active']"></span>
-	            
-	             <h3>
-	               {{tip['title']}}
-	             </h3>
+	            <span class="icon primary icon-check pull-left m-r m-t" ng-show="tip.tipTypes[0]['name']=='active'"></span>
+			 <ul class="nav nav-pills pull-left m-t m-r" ng-show="tip.tipTypes.length==0">
+			 	<li>
+			 		 <a ng-click="setActiveTip(tip,$index)" >set active</a>
+			 	</li>
+				<li ng-show="pressed.keyCode==91">
+					<a ng-click="deleteTip(tip,$index)" class="btn btn-danger-outline" >delete</a>
+				</li>
+			 </ul>
+	             <h3 ng-keyup="pressed=''" ng-keydown="pressed = $event" class="pull-left" ng-model="tip['title']" contenteditable></h3> 
+				
+				
+				 <div class="clearfix"></div>
 	           </div>
-			   <p ng-bind-html="tip['body']" ng-class="{'open':tip['open'], 'closed':!tip['open']}"></p>
+			   <p contenteditable ng-model="tip['body']" ng-class="{'open':tip['open'], 'closed':!tip['open']}"></p>
 			   <span class="pull-right"><a ng-click="expand($index)">[ more ]</a></span>
+			   <button ng-show="changed"  class="btn btn-xs btn-primary pull-right m-r" ng-click="saveTip(tip,changed,$index)">save</button> 
 		</div>
 		</div>
      
     <div class="col-md-3">
 		<div class="panel panel-default m-b-md hidden-xs">
 			<div class="panel-body">
-				<a class="btn btn-primary m-t-0 w-full">Add Tip</a>
+				<a ng-click="addTip()" class="btn btn-primary m-t-0 w-full">Add Tip</a>
 				
 				
 			</div>

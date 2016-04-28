@@ -9,7 +9,7 @@
 			    <uib-accordion-group heading="{{ item['name'] }}" ng-repeat="item in items">
 				  <ul class="areas p-t-md">
 	                  <li ng-repeat="video in item.videos">
-	                      <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ video['title'] }}</a>
+	                      <a href="#" ng-click="$event.preventDefault(); add(video)">{{ video['title'] }}</a>
 	                  </li>
 	              </ul>
 			    </uib-accordion-group>
@@ -20,7 +20,7 @@
 			  
           </div>
           <div class="modal-footer">
-               Selected: <b>{{ selected.item['name'] }}</b>
-              <button class="btn btn-primary-outline" type="button" ng-click="cancel()">Cancel</button>
-			  <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+              
+              <button class="btn btn-default-outline" type="button" ng-click="cancel()">close</button>
+			  
           </div>

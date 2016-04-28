@@ -13,7 +13,9 @@ button#split-button.btn.btn-primary-outline.p-t-0.p-b-0:hover{
 	background-color:#fff;
 	cursor:initial;
 }
-
+input.input-lg{
+	background-color:#fafafa;
+}
 tr.inactive{
 	background-color:#fafafa;
 	opacity:0.3;
@@ -30,7 +32,7 @@ tr.inactive td h5{
   border-color: #d3e0e9;
 }
 ul.dropdown-menu{
-	width:94%;
+	/*width:94%;*/
 }
 .modal-content ul.nav-tabs li{
 	font-size:2em;
@@ -73,8 +75,9 @@ p.closed{
 	transition: max-height 0.350s;
 }
 ul.areas li{
-	font-size: 1.5em;
-	list-style: none
+	font-size: 1.1em;
+	list-style: none;
+	font-weight: bold;
 }
 ul.areas{}
 /* general overrides */

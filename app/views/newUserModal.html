@@ -1,0 +1,42 @@
+		
+		   
+		  <div class="modal-header">
+              <h3 class="modal-title">New Patient</h3>
+          </div>
+          <div class="modal-body">
+			  
+		      <form ng-submit="newPatient()"  name="myForm" class="m-x-auto text-center app-login-form">
+
+		        <span class="app-brand m-b-lg">
+       
+		        </span>
+			<fieldset>  
+		        <div class="form-group">
+		          <input name="first" ng-model="first" ui-validate="false" class="form-control"  placeholder="First" required>
+		        </div>
+			</fieldset>
+			<fieldset>
+		        <div class="form-group">
+		          <input name="last" ng-model="last" class="form-control"  placeholder="Last" required>
+		        </div>
+			</fieldset>
+			<fieldset>
+				
+		        <div class="form-group m-b-md">
+		          <input name="email" ng-model="email" class="form-control"  placeholder="Email" required>
+		        </div>
+			</fieldset>
+
+		       
+
+		        
+
+		        
+		      </form>
+			  
+          </div>
+          <div class="modal-footer">
+            
+              <button class="btn btn-primary-outline" type="button" ng-click="cancel()">Cancel</button>
+			  <button class="btn btn-primary" type="button" ng-click="newPatient()" ng-disabled="myForm.$invalid" >Next</button>
+          </div>

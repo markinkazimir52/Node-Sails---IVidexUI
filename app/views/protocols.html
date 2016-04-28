@@ -44,12 +44,16 @@
 	           
 	           <div class="page-header">
 				 
-	             <button type="submit" class="btn btn-primary-outline   pull-right" ng-click="open('lg')">
+	             <button ng-hide="changed" type="submit" class="btn btn-primary-outline   pull-right" ng-click="open('lg',protocol)">
 	            <span class="icon icon-plus"></span>
 	             </button>
-	             <h3>
-	               {{protocol['name']}}
-	             </h3>
+ 	             <button ng-show="changed" type="submit" class="btn btn-primary-outline btn-xs   pull-right" ng-click="save(protocol,$index)">
+ 	           save
+ 	             </button>
+ 	             <button type="submit" class="btn btn-sm  btn-danger-outline pull-left m-r m-l" ng-click="deleteProtocol(protocol['id'],$index)">
+ 	        		  <span class="icon icon-minus"></span>
+ 	             </button>
+	             <h3 contenteditable ng-model="protocol['name']"></h3>
 	           </div>
 			   <table class="table">
 	            <thead>
@@ -75,72 +79,72 @@
 							<!-- class="inactive" -->
 			              <tr ng-repeat="exercise in protocol.exercises" >
 			                <td>
-			                  <h5>
+			                  <h5 >
 			                    {{exercise['name']}}
 			                  </h5>
 			                </td>
 			                <td>
 								<div class="btn-group" uib-dropdown>
-									<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-										{{exercise['holds']}}
-									</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									
+									<button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+										
+										<span >{{exercise['holds']}}</span>
 										<span class="caret"></span>
-										<span class="sr-only">{{exercise['holds']}}</span>
 									</button>
 									<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-										<li role="menuitem"><a href="#">0</a></li>
+										<li role="menuitem"><a ng-click="exercise['holds']=0;updateHolds(0,exercise['id']);" href="javascript:event.preventDefault()">0</a></li>
 										
-										<li role="menuitem"><a href="#">3</a></li>
+										<li role="menuitem"><a ng-click="exercise['holds']=3;updateHolds(3,exercise['id'])" href="javascript:event.preventDefault()">3</a></li>
 										
-										<li role="menuitem"><a href="#">5</a></li>
-										<li role="menuitem"><a href="#">10</a></li>
+										<li role="menuitem"><a ng-click="exercise['holds']=5;updateHolds(5,exercise['id'])" href="javascript:event.preventDefault()">5</a></li>
+										<li role="menuitem"><a ng-click="exercise['holds']=10;updateHolds(10,exercise['id'])" href="javascript:event.preventDefault()">10</a></li>
 										
 									</ul>
 								</div>
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-									{{exercise['reps']}}
+								
 								</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									
+									<span class="">{{exercise['reps']}}</span>
 									<span class="caret"></span>
-									<span class="sr-only">{{exercise['reps']}}</span>
 								</button>
 								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
-									<li role="menuitem"><a href="#">10</a></li>
-									<li role="menuitem"><a href="#">15</a></li>
-									<li role="menuitem"><a href="#">20</a></li>
+									<li role="menuitem"><a ng-click="exercise['reps']=10;updateReps(10,exercise['id'])" href="javascript:event.preventDefault()">10</a></li>
+									<li role="menuitem"><a ng-click="exercise['reps']=15;updateReps(15,exercise['id'])" href="javascript:event.preventDefault()">15</a></li>
+									<li role="menuitem"><a ng-click="exercise['reps']=20;updateReps(20,exercise['id'])" href="javascript:event.preventDefault()">20</a></li>
 									
 								</ul>
 							</div>
 			                </td>
 			                <td>
 							<div class="btn-group" uib-dropdown>
-								<button id="split-button" type="button" class="btn btn-primary-outline p-t-0 p-b-0">
-									{{exercise['weeks']}}
+								
 								</button><button type="button" class="btn btn-primary-outline p-t-0 p-b-0" uib-dropdown-toggle>
+									
+									<span class="" ng-show="exercise['weeks']<52">{{exercise['weeks']}}</span>
+									<span class="" ng-show="exercise['weeks']==52">forever</span>
 									<span class="caret"></span>
-									<span class="sr-only">{{exercise['weeks']}}</span>
 								</button>
 								<ul class="uib-dropdown-menu" role="menu" aria-labelledby="split-button">
 									
-									<li role="menuitem"><a href="#">2</a></li>
+									<li role="menuitem"><a ng-click="exercise['weeks']=2;updateWeeks(2,exercise['id'])" href="javascript:event.preventDefault()">2</a></li>
 									
-									<li role="menuitem"><a href="#">4</a></li>
+									<li role="menuitem"><a ng-click="exercise['weeks']=4;updateWeeks(4,exercise['id'])" href="javascript:event.preventDefault()">4</a></li>
 									
-									<li role="menuitem"><a href="#">6</a></li>
+									<li role="menuitem"><a ng-click="exercise['weeks']=6;updateWeeks(6,exercise['id'])" href="javascript:event.preventDefault()">6</a></li>
 									
-									<li role="menuitem"><a href="#">8</a></li>
-									<li role="menuitem"><a href="#">forever</a></li>
+									<li role="menuitem"><a ng-click="exercise['weeks']=8;updateWeeks(8,exercise['id'])" href="javascript:event.preventDefault()">8</a></li>
+									<li role="menuitem"><a ng-click="exercise['weeks']=52;updateWeeks(52,exercise['id'])" href="javascript:event.preventDefault()">forever</a></li>
 								</ul>
 							</div>
 			                </td>
 			                <td class="p-t-0">
 			                 
-			                    <a class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
+			                    <a ng-click="protocol.exercises.splice($index,1);removeEx(exercise['id'])" class=" btn btn-danger-outline pull-right btn-xs"><span>delete</span></a>
 			                  
 			                </td>
-			              </tr>
 			             
 			            </tbody>
 			            
@@ -151,7 +155,7 @@
     <div class="col-md-3">
 		<div class="panel panel-default m-b-md hidden-xs">
 			<div class="panel-body">
-				<a class="btn btn-primary m-t-0 w-full">New Protocol</a>
+				<a class="btn btn-primary m-t-0 w-full" ng-click="openNew('lg')">New Protocol</a>
 				
 				
 			</div>
