@@ -153,3 +153,74 @@ td a.btn-xs {
 .app-brand img {
   width: 100%;
 }
+
+
+/* ------------------------------------------------------- 
+	Title: newVideoModal
+	Author: Marcin K.
+	Date: 2016-05-06
+--------------------------------------------------------*/
+.new-video-modal{
+	display: inline-block;
+	padding: 20px 50px;
+	width: 100%;
+}
+.new-video-modal .col-md-6{
+	padding: 0;
+}
+.new-video-modal fieldset label{
+	float: left;
+}
+.new-video-modal .areas{
+	float: left;
+	width: 100%;
+	text-align: left;
+}
+.new-video-modal .therapy-areas{
+	padding-left: 30px;
+}
+.new-video-modal .therapy-areas span.select-areas{
+	float: left;
+	margin-bottom: 10px;
+}
+.new-video-modal .instruction {
+	padding: 0;
+}
+.new-video-modal .instruction label{
+	float: left;
+}
+.new-video-modal .instruction .instruction-content{
+	width: 100%;
+	min-height: 150px;
+	float: left;
+	margin-top: 10px;
+}
+.new-video-modal .instruction .instruction-content ul li{
+	text-align: left;
+}
+.new-video-modal .vimeo-video{
+	display: inline-block;
+	width: 100%;
+	margin-top: 10px;
+}
+.new-video-modal .vimeo-video .col-md-6{
+	padding: 0 10px;
+}
+.new-video-modal .vimeo-video .vimeoId span{
+	float: left;
+	margin-bottom: 10px;
+}
+.new-video-modal .vimeo-video .upload-vimeo span{
+	margin-bottom: 10px;
+	display: inline-block;
+}
+.new-video-modal .vimeo-video a{
+	width: 100%;
+	float: left;
+}
+.new-video-modal .vimeo-video a img{
+	width: 55px;
+}
+.new-video-modal .areas input{
+	margin-right: 10px;
+}

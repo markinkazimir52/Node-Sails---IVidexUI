@@ -137,7 +137,7 @@ angular.module('iVidexApp')
 		  }
 		  console.log(protocol);
 		  API.postProtocol(protocol).then(function(res){
-		  $modalInstance.close(res.data);	
+		  $modalInstance.close(res.data);
 			
 			
 	  		},function(reason){});

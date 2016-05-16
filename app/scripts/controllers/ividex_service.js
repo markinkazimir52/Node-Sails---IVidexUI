@@ -1,13 +1,14 @@
 angular.module('iVidexApp').factory('API',['$http','$rootScope','$q', function ($http,$rootScope,$q) 
 	{
-		var server="http://52.91.185.218:1337";
-		//var server="http://localhost:1337";
+		// var server="http://54.89.89.127:1337";  // dev.ividex
+		// var server="http://52.91.185.218:1337";  // ividex
+		var server="http://localhost:1337";  // localhost
 		return {
 			
 			
 					
 					
-					login: function (data)
+						login: function (data)
 						{						
 							var path="/auth/login";
 							return $http.post(server+path,data, {
@@ -187,6 +188,26 @@ angular.module('iVidexApp').factory('API',['$http','$rootScope','$q', function (
 								cache:false
 							});
 						},
+						postVideo: function(data){
+							var path="/video";
+							return $http.post(server+path,data,{
+				          		headers: {
+				            		"Content-Type": "application/json"
+				          				},
+								
+								cache:false
+							});
+						},
+						updateVideo: function(data, id){
+							var path="/video/"+id;
+							return $http.put(server+path,data,{
+				          		headers: {
+				            		"Content-Type": "application/json"
+				          				},
+								
+								cache:false
+							});
+						},
 						getTips: function(){
 							//data.access_token=$rootScope.token;
 							var path="/tip";
@@ -307,8 +328,17 @@ angular.module('iVidexApp').factory('API',['$http','$rootScope','$q', function (
 								cache:false
 							});
 						},
-					    
-					
+					    getVideoById: function(id){
+					    	var path="/video/"+id;
+
+							return $http.get(server+path, {
+				          		headers: {
+				            		"Content-Type": "application/json"
+				          				},
+								
+								cache:false
+							});
+					    }
 
 				}
 	}]);
@@ -319,7 +349,7 @@ angular.module('iVidexApp').factory('API',['$http','$rootScope','$q', function (
 				
 		        'responseError': function(rejection) {
 				      // do something on error 
-				if(rejection.status===401){  
+				if(rejection.status===401){
 				   alert('Wrong Email Password combination')
 				   console.log($rootScope);
 				//console.log($q);  

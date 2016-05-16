@@ -27,7 +27,7 @@ module.exports = function (grunt) {
     dist: 'dist',
     s3AccessKey: grunt.option('s3AccessKey') || 'AKIAIRRXAQ2PCVCPIMRQ',
     s3SecretAccessKey: grunt.option('s3SecretAccessKey') || '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',
-    s3Bucket: grunt.option('s3Bucket') || 'ividex',
+    s3Bucket: grunt.option('s3Bucket') || 'dev.ividex',
   };
 
   // Define the configuration for all the tasks
@@ -420,7 +420,7 @@ module.exports = function (grunt) {
             {expand: true, cwd: 'dist/', src: ['**'], dest: 'cms/', action: 'upload'}
         ]
       }
-    }
+    },
 
     // Test settings
     karma: {

@@ -35,6 +35,9 @@
 	    <div class="col-md6 col-md-6" style="display: block;">
 					
 	           <div class="page-header m-t-0">
+	             <button type="submit" class="btn btn-primary-outline   pull-right" ng-disabled="action=='save'" ng-click="open('lg', 'new')">
+	            	<span class="icon icon-plus"></span>
+	             </button>
 	             <h1>
 	               Video Library
 	             </h1>
@@ -48,15 +51,15 @@
 							<!-- class="inactive" -->
 			              <tr ng-repeat="video in videos | filter:filter | orderBy: 'title'" >
 			                
-			                <td>
+			                <td ng-click="open('lg', video)">
 								{{video['title']}}
 			                </td>
-			                <td>
-							{{video['url']}}
+			                <td ng-click="open('lg', video)">
+								{{video['url']}}
 			                </td>
-			                <td>
-								<button ng-show="changed" style="position: relative;float: right;right: -50px" class="btn btn-xs btn-primary" ng-click="saveVideo(video,changed,$index)">save</button>
-							<p contenteditable ng-model="video['description']"></p>
+			                <td ng-click="open('lg', video)">
+								<!-- <button ng-show="changed" style="position: relative;float: right;right: -50px" class="btn btn-xs btn-primary" ng-click="saveVideo(video,changed,$index)">save</button> -->
+								<p contenteditable ng-model="video['description']"></p>
 			                </td>
 			                
 			              </tr>
